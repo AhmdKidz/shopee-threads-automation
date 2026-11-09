@@ -22,6 +22,10 @@
       background: #374151;
       border-radius: 4px;
     }
+    .angle-thumb-active {
+      border-color: #f97316;
+      box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.4);
+    }
   </style>
 </head>
 <body class="bg-[#0e1117] text-gray-100 min-h-screen">
@@ -37,10 +41,10 @@
           <h1 class="text-base font-bold text-white tracking-tight flex items-center gap-2">
             Shopee Threads Studio
             <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-              v1.1 Visual Studio
+              v2.0 Multi-Angle AI Engine
             </span>
           </h1>
-          <p class="text-xs text-gray-400">Mesin Konten Viral Meta Threads + Creator Visual & Sync Google Sheets</p>
+          <p class="text-xs text-gray-400">Adaptasi Visual Sesuai Alur Cerita & Presisi Produk 1:1</p>
         </div>
       </div>
 
@@ -94,13 +98,13 @@
 
       <div class="bg-gradient-to-r from-gray-900 to-[#161b22] border border-gray-800 rounded-2xl p-4 flex items-center justify-between shadow-sm">
         <div class="flex items-center space-x-3">
-          <div class="p-2.5 bg-purple-500/10 text-purple-400 rounded-xl">🎨</div>
+          <div class="p-2.5 bg-purple-500/10 text-purple-400 rounded-xl">🎯</div>
           <div>
-            <div class="text-xs text-gray-400">Visual Generator</div>
-            <div class="text-sm font-semibold text-white">UGC & Canvas Active</div>
+            <div class="text-xs text-gray-400">Akurasi Visual Produk</div>
+            <div class="text-sm font-semibold text-white">Multi-Angle Reference</div>
           </div>
         </div>
-        <span class="text-xs px-2 py-1 rounded bg-purple-500/20 text-purple-300 font-medium">Foto Siap Pakai</span>
+        <span class="text-xs px-2 py-1 rounded bg-purple-500/20 text-purple-300 font-medium">Presisi 1:1 Nyata</span>
       </div>
     </div>
 
@@ -111,18 +115,20 @@
       <section class="lg:col-span-5 bg-[#161b22] border border-gray-800 rounded-2xl p-5 shadow-lg space-y-5">
         <div class="flex items-center justify-between border-b border-gray-800/80 pb-3">
           <h2 class="text-base font-bold text-white flex items-center gap-2">
-            <span class="text-orange-500">⚡</span> Parameter Produk
+            <span class="text-orange-500">⚡</span> Parameter Produk & Visual
           </h2>
-          <button id="btnQuickSample" type="button" class="text-xs text-orange-400 hover:text-orange-300 flex items-center gap-1 font-medium transition">
-            🎲 Isi Contoh Cepat
-          </button>
+          <div class="flex items-center gap-2">
+            <button id="btnQuickMistflow" type="button" class="text-xs text-orange-400 hover:text-orange-300 flex items-center gap-1 font-medium transition bg-orange-500/10 px-2.5 py-1 rounded-lg border border-orange-500/30">
+              👟 Muat Mistflow Blue
+            </button>
+          </div>
         </div>
 
         <form id="generatorForm" class="space-y-4">
           <!-- Shopee Affiliate URL -->
           <div>
             <label class="block text-xs font-medium text-gray-300 mb-1">
-              Link Produk / Toko Shopee Affiliate <span class="text-rose-500">*</span>
+              Link Komisi XTRA / Link Shopee <span class="text-rose-500">*</span>
             </label>
             <div class="relative">
               <input type="url" id="inputUrl" required
@@ -130,16 +136,16 @@
                      class="w-full bg-[#0d1117] border border-gray-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition">
               <span class="absolute right-3 top-2.5 text-xs text-gray-400">🔗</span>
             </div>
-            <p class="text-[11px] text-gray-400 mt-1">Gunakan link pendek affiliate (s.shopee.co.id) agar rapi.</p>
+            <p class="text-[11px] text-gray-400 mt-1">Gunakan link affiliate Shopee Anda agar komisi tercatat.</p>
           </div>
 
           <!-- Product / Store Name -->
           <div>
             <label class="block text-xs font-medium text-gray-300 mb-1">
-              Nama Produk / Toko <span class="text-rose-500">*</span>
+              Nama Produk / Seri Toko <span class="text-rose-500">*</span>
             </label>
             <input type="text" id="inputName" required
-                   placeholder="Contoh: Lucky Fan Store - Sneakers Kasual Korean Style"
+                   placeholder="Contoh: Luckyfanstore - Sneakers MISTFLOW BLUE (LF8)"
                    class="w-full bg-[#0d1117] border border-gray-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition">
           </div>
 
@@ -148,76 +154,106 @@
             <div>
               <label class="block text-xs font-medium text-gray-300 mb-1">Kategori</label>
               <select id="inputCategory" class="w-full bg-[#0d1117] border border-gray-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-500 transition">
-                <option value="Sepatu Sneakers & Sandal">Sepatu & Sandal</option>
+                <option value="Sepatu Olahraga & Running">Sepatu Olahraga & Running</option>
+                <option value="Sepatu Sneakers & Sandal">Sepatu Sneakers & Sandal</option>
                 <option value="Fashion Pria / Wanita">Fashion & OOTD</option>
                 <option value="Gadget & Aksesoris HP">Gadget & Elektronik</option>
                 <option value="Peralatan Rumah Tangga / Kos">Home & Living / Kos</option>
                 <option value="Skincare & Perawatan Diri">Skincare & Beauty</option>
-                <option value="Alat Tulis & Kantor">Perlengkapan Kerja/Kuliah</option>
                 <option value="Lainnya / Random Racun">Kategori Lainnya</option>
               </select>
             </div>
             <div>
               <label class="block text-xs font-medium text-gray-300 mb-1">Perkiraan Komisi</label>
               <input type="text" id="inputCommission"
-                     value="Komisi Toko / XTRA"
-                     placeholder="Contoh: 10% - 15%"
+                     value="Komisi XTRA"
+                     placeholder="Contoh: Komisi XTRA"
                      class="w-full bg-[#0d1117] border border-gray-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-500 transition">
             </div>
           </div>
 
-          <!-- Voucher / Promo Info -->
-          <div>
-            <label class="block text-xs font-medium text-gray-300 mb-1">Info Diskon / Voucher Toko</label>
-            <input type="text" id="inputVoucher"
-                   placeholder="Contoh: Voucher Diskon 50rb + Free Ongkir XTRA"
-                   value="Voucher Diskon Toko s.d 50rb + Gratis Ongkir XTRA"
-                   class="w-full bg-[#0d1117] border border-gray-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition">
+          <!-- SECTION: MULTI-ANGLE REFERENCE PHOTOS -->
+          <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <label class="text-xs font-bold text-white flex items-center gap-1.5">
+                <span>📸</span> Foto Referensi Produk Asli (Multi-Sudut)
+              </label>
+              <span class="text-[10px] text-emerald-400 font-medium">Kunci Akurasi 1:1</span>
+            </div>
+            <p class="text-[11px] text-gray-400">
+              Unggah 1-3 foto asli dari katalog/ulasan Shopee agar AI tidak salah bentuk dan warna.
+            </p>
+
+            <!-- Angle Thumbnails Grid -->
+            <div class="grid grid-cols-3 gap-2" id="angleThumbsContainer">
+              <div class="relative group aspect-square rounded-lg overflow-hidden border border-gray-700 bg-black/40 flex items-center justify-center">
+                <img id="thumbAngle1" src="assets/mistflow_blue_shopee.jpg" class="w-full h-full object-cover">
+                <span class="absolute bottom-1 left-1 bg-black/70 text-[9px] px-1 py-0.5 rounded text-gray-200">Samping</span>
+              </div>
+              <div class="relative group aspect-square rounded-lg overflow-hidden border border-gray-700 bg-black/40 flex items-center justify-center">
+                <img id="thumbAngle2" src="assets/mistflow_blue_exact_pov.jpg" class="w-full h-full object-cover">
+                <span class="absolute bottom-1 left-1 bg-black/70 text-[9px] px-1 py-0.5 rounded text-gray-200">Serong Depan</span>
+              </div>
+              <div class="relative group aspect-square rounded-lg overflow-hidden border border-gray-700 bg-black/40 flex items-center justify-center">
+                <img id="thumbAngle3" src="assets/sneakers_detail.jpg" class="w-full h-full object-cover">
+                <span class="absolute bottom-1 left-1 bg-black/70 text-[9px] px-1 py-0.5 rounded text-gray-200">Detail Sol</span>
+              </div>
+            </div>
+
+            <!-- Upload Custom File -->
+            <label class="block w-full py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 rounded-xl cursor-pointer text-center text-xs font-medium transition">
+              ➕ Unggah Foto Sudut Lain Dari HP/PC
+              <input type="file" id="inputCustomAngleFile" accept="image/*" class="hidden">
+            </label>
           </div>
 
-          <!-- Price Highlight for Visuals -->
+          <!-- SECTION: SCENE & STORYLINE ADAPTATION -->
           <div>
-            <label class="block text-xs font-medium text-gray-300 mb-1">Label Tag Harga / Highlight (Untuk Poster Visual)</label>
-            <input type="text" id="inputPriceTag"
-                   placeholder="Contoh: Under 150rb ✨ atau Hemat 60%"
-                   value="Under 150rb 🔥 Penyelamat Dompet"
-                   class="w-full bg-[#0d1117] border border-gray-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition">
+            <label class="block text-xs font-medium text-gray-300 mb-1.5">
+              Pilih Alur Cerita Suasana Foto (AI Scene Adaptation)
+            </label>
+            <div class="space-y-1.5 text-xs">
+              <label class="flex items-center gap-2 p-2 rounded-xl border border-orange-500/40 bg-orange-500/10 cursor-pointer transition has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
+                <input type="radio" name="sceneStory" value="jogging" checked class="text-orange-500 focus:ring-0">
+                <span class="text-white font-medium">🏃 Olahraga Pagi / Jogging Track (Outdoor Sporty)</span>
+              </label>
+
+              <label class="flex items-center gap-2 p-2 rounded-xl border border-gray-700 bg-gray-800/40 cursor-pointer transition hover:border-gray-600 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
+                <input type="radio" name="sceneStory" value="street" class="text-orange-500 focus:ring-0">
+                <span class="text-white font-medium">🚶 Trotoar Kota / Daily Walk Santai (Golden Hour)</span>
+              </label>
+
+              <label class="flex items-center gap-2 p-2 rounded-xl border border-gray-700 bg-gray-800/40 cursor-pointer transition hover:border-gray-600 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
+                <input type="radio" name="sceneStory" value="cafe" class="text-orange-500 focus:ring-0">
+                <span class="text-white font-medium">☕ Nongkrong di Kafe / WFC (Wood Table & Coffee)</span>
+              </label>
+
+              <label class="flex items-center gap-2 p-2 rounded-xl border border-gray-700 bg-gray-800/40 cursor-pointer transition hover:border-gray-600 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
+                <input type="radio" name="sceneStory" value="transit" class="text-orange-500 focus:ring-0">
+                <span class="text-white font-medium">🚇 Stasiun KRL / Peron Transit (Sepatu Tempur Harian)</span>
+              </label>
+            </div>
           </div>
 
           <!-- Copywriting Formula Selection -->
           <div>
-            <label class="block text-xs font-medium text-gray-300 mb-1.5">Pilih Formula Copywriting Threads</label>
-            <div class="grid grid-cols-1 gap-2">
-              <label class="flex items-start gap-2.5 p-2.5 rounded-xl border border-orange-500/50 bg-orange-500/10 cursor-pointer transition has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
-                <input type="radio" name="formula" value="curhat" checked class="mt-0.5 text-orange-500 focus:ring-0">
-                <div>
-                  <div class="text-xs font-semibold text-white">1. Curhat Hemat / Smart Shopping (Paling Viral)</div>
-                  <div class="text-[11px] text-gray-400">Keresahan dompet tipis / boncos belanja vs solusi cerdas harga terjangkau.</div>
-                </div>
+            <label class="block text-xs font-medium text-gray-300 mb-1.5">Pilih Formula Naskah Threads</label>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <label class="p-2 rounded-xl border border-gray-700 bg-gray-800/40 cursor-pointer hover:border-gray-600 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
+                <input type="radio" name="formula" value="curhat" checked class="text-orange-500 focus:ring-0">
+                <span class="font-semibold text-white ml-1">1. Curhat Hemat</span>
               </label>
-
-              <label class="flex items-start gap-2.5 p-2.5 rounded-xl border border-gray-700 bg-gray-800/40 cursor-pointer transition hover:border-gray-600 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
-                <input type="radio" name="formula" value="unpopular" class="mt-0.5 text-orange-500 focus:ring-0">
-                <div>
-                  <div class="text-xs font-semibold text-white">2. Unpopular Opinion / Reality Check</div>
-                  <div class="text-[11px] text-gray-400">Pernyataan kontradiktif yang memicu obrolan/komentar hangat di Threads.</div>
-                </div>
+              <label class="p-2 rounded-xl border border-gray-700 bg-gray-800/40 cursor-pointer hover:border-gray-600 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
+                <input type="radio" name="formula" value="unpopular" class="text-orange-500 focus:ring-0">
+                <span class="font-semibold text-white ml-1">2. Unpopular Opinion</span>
               </label>
-
-              <label class="flex items-start gap-2.5 p-2.5 rounded-xl border border-gray-700 bg-gray-800/40 cursor-pointer transition hover:border-gray-600 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
-                <input type="radio" name="formula" value="kurasi" class="mt-0.5 text-orange-500 focus:ring-0">
-                <div>
-                  <div class="text-xs font-semibold text-white">3. Kurasi Solutif (Listicle 3 Alasan)</div>
-                  <div class="text-[11px] text-gray-400">Cocok untuk target spesifik (anak kos, ngantor, mahasiswa) dengan poin jelas.</div>
-                </div>
+              <label class="p-2 rounded-xl border border-gray-700 bg-gray-800/40 cursor-pointer hover:border-gray-600 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
+                <input type="radio" name="formula" value="kurasi" class="text-orange-500 focus:ring-0">
+                <span class="font-semibold text-white ml-1">3. Kurasi 3 Alasan</span>
               </label>
-
-              <label class="flex items-start gap-2.5 p-2.5 rounded-xl border border-gray-700 bg-gray-800/40 cursor-pointer transition hover:border-gray-600 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
-                <input type="radio" name="formula" value="story" class="mt-0.5 text-orange-500 focus:ring-0">
-                <div>
-                  <div class="text-xs font-semibold text-white">4. Personal Story / Review Jujur Pemakaian</div>
-                  <div class="text-[11px] text-gray-400">Gaya ulasan pribadi setelah sebulan pakai, jujur dan tanpa kesan jualan.</div>
-                </div>
+              <label class="p-2 rounded-xl border border-gray-700 bg-gray-800/40 cursor-pointer hover:border-gray-600 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
+                <input type="radio" name="formula" value="story" class="text-orange-500 focus:ring-0">
+                <span class="font-semibold text-white ml-1">4. Review 1 Bulan</span>
               </label>
             </div>
           </div>
@@ -226,7 +262,7 @@
           <div class="pt-2 flex items-center gap-3">
             <button type="submit" id="btnGenerate"
                     class="flex-1 bg-gradient-to-r from-orange-500 to-rose-600 hover:from-orange-600 hover:to-rose-700 text-white font-bold py-2.5 px-4 rounded-xl shadow-lg shadow-orange-500/20 flex items-center justify-center gap-2 text-sm transition">
-              <span>✨</span> Generate Naskah & Visual
+              <span>✨</span> Adaptasi Cerita & Visual AI
             </button>
             <button type="button" id="btnReset"
                     class="px-3 py-2.5 rounded-xl border border-gray-700 text-gray-400 hover:text-white hover:bg-gray-800 text-xs transition">
@@ -244,10 +280,10 @@
           <div class="flex items-center justify-between border-b border-gray-800 pb-3">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <h3 class="text-sm font-bold text-white">Preview Tampilan Meta Threads</h3>
+              <h3 class="text-sm font-bold text-white">Pratinjau Meta Threads (Visual Sesuai Cerita)</h3>
             </div>
             <span class="text-xs px-2.5 py-0.5 rounded-full bg-gray-800 text-gray-400 border border-gray-700">
-              Format: Post Utama + Balasan #1
+              Post Utama + Balasan #1
             </span>
           </div>
 
@@ -275,72 +311,60 @@
 
             <!-- Main Post Body Content -->
             <div id="mainPostContent" class="text-sm text-gray-200 leading-relaxed whitespace-pre-line py-1 font-sans">
-              Jujur, semenjak kuliah/kerja udah ga pernah lagi gengsi beli sneakers jutaan cuma buat daily walk atau tempur di jalanan.
+              Jujur, semenjak rutin jogging pagi sama jalan santai tiap weekend, udah ga pernah lagi gengsi beli sepatu lari jutaan cuma buat bakar kalori.
 
-              Asal solnya empuk, modelnya ga norak, dan harganya under 150rb udah lebih dari cukup. Kemarin nemu toko Lucky Fan Store ini pas lagi iseng nyari sepatu santai, ternyata banyak model Korean style yang estetik bgt dan ga gampang jebol.
+              Asal solnya bouncy, ada plat TPU biar ga gampang oleng, dan empuk buat napak aspal, udah lebih dari cukup bgt. Kemarin nemu Luckyfanstore Mistflow Blue ini pas lagi iseng nyari sepatu lari under 200rb, ternyata pas dateng kaget bgt cuttingannya rapi dan beneran empuk ga bikin tumit sakit 😭🔥
 
-              Daripada boncos tiap bulan beli sepatu mahal cuma buat harian, ini penyelamat dompet bgt sih 😭
+              Asli penyelamat dompet bgt buat yang mau mulai hidup sehat tanpa boncos!
             </div>
 
-            <!-- VISUAL ATTACHMENTS (CAROUSEL GRID) -->
+            <!-- MAIN VISUAL: ADAPTED ON-FEET POV PHOTO -->
             <div class="space-y-2 pt-1">
-              <div class="flex items-center justify-between text-xs text-gray-400">
-                <span class="font-semibold text-amber-300 flex items-center gap-1">
-                  📸 Rekomendasi Visual Siap Pakai (2 Angle Foto):
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-emerald-400 flex items-center gap-1.5">
+                  <span>📸</span> Foto Hasil Adaptasi AI (100% Produk Asli):
                 </span>
-                <span class="text-[11px] text-gray-500">Klik untuk unduh / gunakan</span>
+                <span class="text-[11px] text-gray-400" id="currentSceneTag">Suasana: Jogging Track Pagi</span>
               </div>
 
-              <!-- PHOTO GRID -->
-              <div class="grid grid-cols-2 gap-3" id="visualPhotosContainer">
-                <!-- Angle 1: POV Street Lifestyle -->
-                <div class="group relative rounded-xl overflow-hidden border border-gray-700 bg-gray-900 aspect-square shadow-md">
-                  <img id="imgVisualPov" src="assets/sneakers_pov.jpg" alt="Foto POV Threads"
-                       class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-2.5">
-                    <span class="text-[11px] font-bold text-white flex items-center gap-1">
-                      🚶 Angle 1: POV Casual Lifestyle
-                    </span>
-                    <span class="text-[10px] text-gray-300">Fotorealistik ponsel pintar ala For You Threads</span>
-                    <a id="btnDlPov" href="assets/sneakers_pov.jpg" download="threads_visual_pov.jpg"
-                       class="mt-1.5 w-full py-1 rounded bg-orange-600/90 hover:bg-orange-500 text-white text-[11px] font-semibold text-center transition">
-                      ⬇️ Unduh Foto Ini
-                    </a>
+              <!-- Main Hero Photo Card -->
+              <div class="relative rounded-xl overflow-hidden border border-gray-700 bg-gray-900 shadow-xl group">
+                <img id="mainAdaptedImg" src="assets/mistflow_blue_exact_pov.jpg" alt="Foto POV Threads"
+                     class="w-full aspect-[4/3] object-cover">
+                
+                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 flex items-center justify-between">
+                  <div class="space-y-0.5">
+                    <div class="text-xs font-bold text-white flex items-center gap-1.5">
+                      <span>✅</span> Anatomi Produk 100% Identik Toko Shopee
+                    </div>
+                    <div class="text-[10px] text-gray-300 flex items-center gap-2">
+                      <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Toe Box Hitam</span>
+                      <span class="px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300">Sol 3.0</span>
+                      <span class="px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300">Emblem 8</span>
+                    </div>
                   </div>
-                </div>
 
-                <!-- Angle 2: Close-up Quality -->
-                <div class="group relative rounded-xl overflow-hidden border border-gray-700 bg-gray-900 aspect-square shadow-md">
-                  <img id="imgVisualDetail" src="assets/sneakers_detail.jpg" alt="Foto Detail Threads"
-                       class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-2.5">
-                    <span class="text-[11px] font-bold text-white flex items-center gap-1">
-                      🔍 Angle 2: Detail Jahitan & Sol
-                    </span>
-                    <span class="text-[10px] text-gray-300">Membuktikan bahan awet & ga murahan</span>
-                    <a id="btnDlDetail" href="assets/sneakers_detail.jpg" download="threads_visual_detail.jpg"
-                       class="mt-1.5 w-full py-1 rounded bg-orange-600/90 hover:bg-orange-500 text-white text-[11px] font-semibold text-center transition">
-                      ⬇️ Unduh Foto Ini
-                    </a>
-                  </div>
+                  <a id="btnDownloadAdaptedImg" href="assets/mistflow_blue_exact_pov.jpg" download="threads_mistflow_exact_pov.jpg"
+                     class="px-3 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-semibold text-xs transition flex items-center gap-1 shadow-md">
+                    ⬇️ Unduh Foto
+                  </a>
                 </div>
               </div>
 
-              <!-- AI IMAGE PROMPT BOX -->
+              <!-- AI SURGICAL PROMPT BOX -->
               <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3 space-y-2 text-xs">
                 <div class="flex items-center justify-between">
                   <span class="font-semibold text-purple-400 flex items-center gap-1.5">
-                    <span>✨</span> Prompt Generator Gambar AI (Imagen / DALL-E / Midjourney)
+                    <span>✨</span> Prompt Generator Gambar AI Multi-Sudut (Presisi 1:1)
                   </span>
                   <button id="btnCopyAiPrompt" type="button"
                           class="px-2.5 py-1 rounded bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 text-[11px] font-semibold transition">
                     📋 Salin Prompt AI
                   </button>
                 </div>
-                <div id="aiPromptText" class="p-2 bg-black/40 rounded border border-gray-800/80 text-[11px] font-mono text-gray-300 leading-relaxed whitespace-pre-line">
-                  Aesthetic POV smartphone photography looking down at a person's feet wearing trendy minimalist Korean-style casual sneakers, standing on clean aesthetic urban sidewalk tiles with soft natural golden hour sunlight, authentic UGC social media vibe, realistic casual daily lifestyle
+                <div id="aiPromptText" class="p-2.5 bg-black/40 rounded border border-gray-800/80 text-[11px] font-mono text-gray-300 leading-relaxed whitespace-pre-line">
+                  A high-quality, authentic smartphone lifestyle photograph taken from a natural downward POV angle looking at someone's feet wearing the exact pair of running sneakers shown in the reference images. The product details must strictly replicate the reference shoes: pale mint green to soft sky blue gradient breathable mesh upper, black curved aerodynamic racing line stretching across the toe box and along the lateral side with 'FASHION 3.0', pale mint shoelaces, chunky white athletic foam rocker midsole with blue and teal gradient spray on the upper ridge and '3.0' printed on the heel sole, round emblem with infinity figure-8 on the rear outer heel. The person is wearing relaxed grey jogger pants cuffed at the ankles, standing naturally on a running track with soft morning sunlight. Real authentic candid smartphone photo, zero CGI look, highly faithful to the reference shoes.
                 </div>
-                <p class="text-[10px] text-gray-400">💡 <em>Tip: Masukkan prompt ini ke ChatGPT Plus, Midjourney, Bing Creator, atau Canva Magic Media untuk membuat foto lifestyle produk baru apa pun.</em></p>
               </div>
 
             </div>
@@ -368,7 +392,7 @@
                 </div>
                 <div>
                   <div class="text-xs font-semibold text-white">ahmediks <span class="text-gray-400 font-normal">• Balasan Pertama (Komentar Anda)</span></div>
-                  <div class="text-[11px] text-orange-400">Tautan Affiliate Berkonversi Tinggi</div>
+                  <div class="text-[11px] text-orange-400">Tautan Affiliate Komisi XTRA</div>
                 </div>
               </div>
               <button id="btnCopyReply" type="button"
@@ -378,14 +402,12 @@
             </div>
 
             <div id="replyPostContent" class="text-sm text-gray-200 leading-relaxed whitespace-pre-line py-1">
-              Spill racunnya di sini yaa! Sumpah ini worth it bgt buat daily 🫶✨
-
-              Mumpung tokonya lagi ada Voucher Diskon Toko s.d 50rb + Gratis Ongkir XTRA:
-              👉 https://s.shopee.co.id/3B8qMvggvL
+              Buat yang nanya nama sepatunya atau mau ikutan lari bareng, link katalog resminya di sini yaa (lagi ada Komisi XTRA & voucher toko aktif):
+              👉 https://s.shopee.co.id/7pug2t2mDS
             </div>
 
             <div class="flex items-center justify-between pt-1 text-xs">
-              <a id="btnTestAffLink" href="https://s.shopee.co.id/3B8qMvggvL" target="_blank" rel="noopener noreferrer"
+              <a id="btnTestAffLink" href="https://s.shopee.co.id/7pug2t2mDS" target="_blank" rel="noopener noreferrer"
                  class="text-orange-400 hover:text-orange-300 underline font-mono text-[11px] flex items-center gap-1">
                 ↗️ Tes Buka Tautan Produk
               </a>
@@ -436,66 +458,6 @@
 
         </div>
 
-        <!-- VISUAL CARD GENERATOR STUDIO (CANVAS POSTER MAKER) -->
-        <div class="bg-[#161b22] border border-gray-800 rounded-2xl p-5 shadow-lg space-y-4">
-          <div class="flex items-center justify-between border-b border-gray-800 pb-3">
-            <div>
-              <h3 class="text-sm font-bold text-white flex items-center gap-2">
-                <span>🎨</span> Studio Pembuat Poster Visual Threads
-              </h3>
-              <p class="text-[11px] text-gray-400">Buat foto polaroid / banner minimalis dengan stiker badge harga viral.</p>
-            </div>
-            <span class="text-xs px-2.5 py-0.5 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30">
-              1-Klik Download
-            </span>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-            <!-- Canvas Preview -->
-            <div class="flex flex-col items-center justify-center bg-[#090d13] p-3 rounded-xl border border-gray-800">
-              <canvas id="posterCanvas" width="450" height="450" class="max-w-full rounded-lg shadow-lg border border-gray-700/60"></canvas>
-            </div>
-
-            <!-- Canvas Controls -->
-            <div class="space-y-3 text-xs">
-              <div>
-                <label class="block text-gray-300 font-medium mb-1">Gunakan Foto Produk:</label>
-                <div class="flex items-center gap-2">
-                  <label class="flex-1 px-3 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 rounded-xl cursor-pointer text-center font-medium transition">
-                    📁 Unggah Foto Dari HP/PC
-                    <input type="file" id="canvasFileInput" accept="image/*" class="hidden">
-                  </label>
-                  <button id="btnUseSampleImage" type="button" class="px-3 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 rounded-xl transition">
-                    🔄 Reset Sample
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-gray-300 font-medium mb-1">Badge Teks Estetik:</label>
-                <input type="text" id="canvasBadgeInput" value="Under 150rb 🔥 Penyelamat Dompet"
-                       class="w-full bg-[#0d1117] border border-gray-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-500 transition">
-              </div>
-
-              <div>
-                <label class="block text-gray-300 font-medium mb-1">Tema Stiker Badge:</label>
-                <div class="grid grid-cols-3 gap-2">
-                  <button type="button" class="btn-theme-badge px-2 py-1.5 rounded-lg bg-orange-500 text-white font-semibold text-[11px]" data-color="#EE4D2D">Shopee Red</button>
-                  <button type="button" class="btn-theme-badge px-2 py-1.5 rounded-lg bg-black text-white border border-gray-700 font-semibold text-[11px]" data-color="#111111">Minimal Dark</button>
-                  <button type="button" class="btn-theme-badge px-2 py-1.5 rounded-lg bg-emerald-600 text-white font-semibold text-[11px]" data-color="#059669">Emerald Safe</button>
-                </div>
-              </div>
-
-              <div class="pt-2">
-                <button id="btnDownloadPoster" type="button"
-                        class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-rose-600 hover:from-orange-600 hover:to-rose-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20 transition">
-                  ⬇️ Unduh Gambar Poster Threads (JPG)
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- RECENT LOCALLY SAVED PRODUCTS -->
         <div class="bg-[#161b22] border border-gray-800 rounded-2xl p-4 shadow-lg space-y-3">
           <div class="flex items-center justify-between">
@@ -515,23 +477,23 @@
 
     </div>
 
-    <!-- THREADS POSTING CHEATSHEET & TIPS -->
+    <!-- STRATEGY GUIDE FOOTER -->
     <div class="bg-[#161b22] border border-gray-800 rounded-2xl p-5 shadow-sm space-y-3">
       <h3 class="text-sm font-bold text-white flex items-center gap-2">
-        <span>💡</span> Formula Visual Berkonversi Tinggi di Meta Threads
+        <span>💡</span> Mengapa Sistem Multi-Angle Ini Mengonversi Sangat Tinggi?
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-gray-300">
         <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800 space-y-1">
-          <div class="font-semibold text-orange-400">1. Hindari Foto Brosur Toko</div>
-          <p class="text-gray-400">Audiens Threads benci iklan brosur. Gunakan foto bergaya ponsel amatir (UGC) atau foto flatlay dengan pencahayaan jendela alami.</p>
+          <div class="font-semibold text-orange-400">1. Zero Buyer Disappointment</div>
+          <p class="text-gray-400">Pembeli melihat foto di Threads dan barang yang mereka buka di Shopee 100% sama (warna, sol, jahitan). Tidak ada rasa tertipu.</p>
         </div>
         <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800 space-y-1">
-          <div class="font-semibold text-emerald-400">2. Kombinasi 2 Foto (Karusel)</div>
-          <p class="text-gray-400">Pasang 2 foto: 1 foto saat produk sedang dipakai (POV gaya santai), dan 1 foto zoom detail kualitas material untuk memicu dwell-time.</p>
+          <div class="font-semibold text-emerald-400">2. Menjiwai Alur Cerita Threads</div>
+          <p class="text-gray-400">Jika naskahnya tentang jogging pagi, fotonya ada di jogging track. Jika tentang WFC, fotonya di meja kafe. Sangat relatable dan memicu interaksi.</p>
         </div>
         <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800 space-y-1">
-          <div class="font-semibold text-purple-400">3. Gunakan AI Generator Gambar</div>
-          <p class="text-gray-400">Jika tidak punya produk fisiknya, salin <em>Prompt AI</em> dari dashboard ini lalu generate di ChatGPT/Midjourney dalam hitungan detik!</p>
+          <div class="font-semibold text-purple-400">3. Bebas Kesan AI Palsu</div>
+          <p class="text-gray-400">Menggunakan sudut kamera ponsel alami, pencahayaan matahari riil, dan gaya celana kasual anak muda sehingga tampak seperti foto asli sendiri.</p>
         </div>
       </div>
     </div>
@@ -547,90 +509,73 @@
   <!-- JAVASCRIPT ENGINE -->
   <script>
     // --- STATE & INITIAL DATA ---
-    const defaultData = {
-      url: "https://s.shopee.co.id/3B8qMvggvL",
-      name: "Lucky Fan Store - Sneakers Kasual Korean Style",
-      category: "Sepatu Sneakers & Sandal",
-      commission: "Komisi Toko / XTRA",
-      voucher: "Voucher Diskon Toko s.d 50rb + Gratis Ongkir XTRA",
-      priceTag: "Under 150rb 🔥 Penyelamat Dompet",
-      formula: "curhat"
+    const mistflowData = {
+      url: "https://s.shopee.co.id/7pug2t2mDS",
+      name: "Luckyfanstore - Sneakers MISTFLOW BLUE (LF8)",
+      category: "Sepatu Olahraga & Running",
+      commission: "Komisi XTRA",
+      voucher: "Voucher Diskon Toko + Bebas Ongkir XTRA",
+      formula: "curhat",
+      sceneStory: "jogging"
     };
 
     let currentDraft = null;
-    let badgeBgColor = "#EE4D2D";
-    let activeCanvasImage = new Image();
 
-    // --- TEMPLATE ENGINE ---
-    function generateCopy(data) {
-      const { url, name, category, voucher, formula, priceTag } = data;
+    // --- TEMPLATE & PROMPT ENGINE ---
+    function generateMultiAngleContent(data) {
+      const { url, name, category, voucher, formula, sceneStory } = data;
       let mainText = "";
-      let visualText = "";
       let replyText = "";
       let angleIdea = "";
       let aiPrompt = "";
+      let sceneLabel = "";
 
-      if (formula === "curhat") {
-        angleIdea = `Rekomendasi Hemat & Solutif: ${name}`;
-        mainText = `Jujur, semenjak kerja/kuliah udah ga pernah lagi gengsi beli barang jutaan cuma buat daily walk atau tempur di jalanan.
+      if (sceneStory === "jogging") {
+        sceneLabel = "Suasana: Jogging Track Pagi (Sporty Bouncy)";
+        angleIdea = `Sepatu Running & Daily Walk Bouncy Sol Tebal: ${name}`;
+        mainText = `Jujur, semenjak rutin jogging pagi sama jalan santai tiap weekend, udah ga pernah lagi gengsi beli sepatu lari jutaan cuma buat bakar kalori.
 
-Asal kualitasnya awet, modelnya ga norak, dan harganya bener-bener ramah di kantong, udah lebih dari cukup bgt. Kemarin nemu ${name} ini pas lagi iseng nyari alternatif hemat, ternyata pas barangnya sampe bikin kaget bgt kualitasnya 😭🔥
+Asal solnya bouncy, ada plat TPU biar ga gampang oleng, dan empuk buat napak aspal, udah lebih dari cukup bgt. Kemarin nemu ${name} ini pas lagi iseng nyari sepatu lari under 200rb, ternyata pas dateng kaget bgt cuttingannya rapi dan beneran empuk ga bikin tumit sakit 😭🔥
 
-Daripada boncos tiap bulan beli barang mahal cuma buat harian, ini asli lifehack penyelamat dompet bgt sih.`;
+Asli penyelamat dompet bgt buat yang mau mulai hidup sehat tanpa boncos!`;
 
-        visualText = `1. Foto POV produk saat sedang dipakai/ditaruh di meja estetik. 2. Foto close-up material/detail kualitasnya.`;
-        aiPrompt = `Aesthetic POV smartphone photography looking down at a person's feet wearing trendy minimalist Korean-style casual sneakers, standing on clean aesthetic urban sidewalk tiles with soft natural golden hour sunlight, authentic UGC social media vibe, realistic casual daily lifestyle`;
-        
-        replyText = `Spill racunnya di sini yaa! Sumpah ini worth it bgt buat daily 🫶✨
+        aiPrompt = `A high-quality, authentic smartphone lifestyle photograph taken from a natural downward POV angle looking at someone's feet wearing the exact pair of running sneakers shown in the reference images. The product details must strictly replicate the reference shoes: pale mint green to soft sky blue gradient breathable mesh upper, black curved aerodynamic racing line stretching across the toe box and along the lateral side with 'FASHION 3.0', pale mint shoelaces, chunky white athletic foam rocker midsole with blue and teal gradient spray on the upper ridge and '3.0' printed on the heel sole, round emblem with infinity figure-8 on the rear outer heel. The person is wearing relaxed grey jogger pants cuffed at the ankles, standing naturally on a running track with soft morning sunlight. Real authentic candid smartphone photo, zero CGI look, highly faithful to the reference shoes.`;
 
-Mumpung tokonya lagi sebar ${voucher}:
-👉 ${url}`;
+      } else if (sceneStory === "street") {
+        sceneLabel = "Suasana: Trotoar Kota / Daily Walk Santai (Golden Hour)";
+        angleIdea = `Sepatu Tempur Daily Walk Anti-Pegal: ${name}`;
+        mainText = `Unpopular opinion: buat daily walk atau jalan santai keliling kota, mending punya sepatu yang bener-bener empuk dan harganya masuk akal daripada sepatu mahal yang tiap keinjek bikin jantungan.
 
-      } else if (formula === "unpopular") {
-        angleIdea = `Debat Kualitas vs Gengsi Mahal: ${name}`;
-        mainText = `Unpopular opinion: banyak barang mahal itu cuma menang di logo dan gengsi doang.
+Sepatu ${name} ini cuttingannya mirip brand luar yang harganya 4x lipatnya. Pas dipake jalan 10.000 langkah kaki tetep adem dan solnya ga gampang kempes. Rekomendasi hidden gem lokal Shopee yang beneran worth it ✨`;
 
-Kemarin nyoba beli ${name} yang harganya terjangkau bgt. Ekspektasi awal ya standar aja, tapi pas dateng malah kepake hampir tiap hari karena nyaman dan bahannya solid.
+        aiPrompt = `A candid smartphone POV photo looking down at feet wearing the exact sneakers from the reference images, standing on clean modern urban pavement tiles during warm golden hour sunset light, wearing relaxed casual pants, natural street walk ambiance, authentic amateur photo aesthetic.`;
 
-Ternyata kalau pinter nyari toko lokal di Shopee, kita bisa dapet kualitas setara harga 3x lipatnya tanpa bikin rekening boncos. Menurut kalian masih worth it ga sih beli brand mahal cuma buat daily?`;
+      } else if (sceneStory === "cafe") {
+        sceneLabel = "Suasana: Kafe / WFC Santai (Wood Table & Coffee)";
+        angleIdea = `OOTD Santai Nongkrong di Kafe: ${name}`;
+        mainText = `Mau kasih review jujur setelah hampir sebulan pake ${name} buat wara-wiri ngopi santai dan kerja di kafe.
 
-        visualText = `1. Foto perbandingan sebelum/sesudah atau foto produk dengan latar polos minimalis. 2. Foto unboxing kemasan toko.`;
-        aiPrompt = `Aesthetic flatlay smartphone photo of ${name} placed neatly on a minimalist warm wood desk beside a coffee cup, soft window sunlight, natural shadow, Pinterest cozy aesthetic, authentic social media photo`;
+Awalnya ngira bakal kaku atau berat, ternyata enteng bgt dan warnanya estetik gampang di-mix-and-match sama outfit santai apa pun. Kadang kepuasan belanja itu bukan soal merek, tapi pas nemu barang murah yang kepake tiap hari tanpa nyesel 🫶☕`;
 
-        replyText = `Buat yang penasaran sama nama tokonya, cek langsung di sini yaa (lagi promo + ${voucher}):
-👉 ${url}`;
+        aiPrompt = `Lifestyle smartphone photograph of the exact sneakers from the reference images resting on a cozy cafe wood floor beside a chair, warm natural window light, aesthetic Pinterest ambiance, realistic authentic social media photo.`;
 
-      } else if (formula === "kurasi") {
-        angleIdea = `3 Alasan Kenapa Wajib Punya: ${name}`;
-        mainText = `Buat yang lagi nyari rekomendasi ${category.toLowerCase()} yang awet tapi harganya under budget:
+      } else { // transit
+        sceneLabel = "Suasana: Stasiun KRL / Peron Transit (Sepatu Tempur)";
+        angleIdea = `Penyelamat Kaki Pengguna KRL & Transportasi Umum: ${name}`;
+        mainText = `Buat pejuang KRL dan transportasi umum yang tiap hari tempur jalan jauh tapi pengen kaki tetep selamat:
 
-Ini 3 alasan kenapa ${name} ini layak masuk keranjang:
-1. Materialnya di atas rata-rata harga sekelasnya (ga ringkih).
-2. Cutting / desainnya netral, gampang di-mix-and-match buat kuliah atau ngantor.
-3. Review pembelinya rata-rata bintang 4.9 dan packingnya aman bgt.
+Ini 3 alasan kenapa ${name} ini wajib masuk wishlist:
+1. Solnya tebal rocker foam, ngeredam hentakan pas buru-buru ngejar kereta.
+2. Bahannya breathable mesh, ga bikin kaki pengap atau bau apek.
+3. Harganya ramah di kantong, ga bikin nyesek pas kena becek atau keinjek.
 
-Definisi nemu hidden gem lokal di Shopee 🛍️✨`;
+Definisi sepatu tempur paling nyaman sejauh ini 🚆👟`;
 
-        visualText = `1. Foto grid 2-3 varian warna produk yang paling estetik. 2. Screenshot rating/review puas dari pembeli.`;
-        aiPrompt = `Close-up high-angle aesthetic smartphone photo of stylish minimalist ${name} resting on a warm natural wood bench in a cozy cafe, showing texture and stitching details, natural indoor window light, Pinterest lifestyle mood, realistic amateur photography`;
-
-        replyText = `Link produk dan katalog lengkapnya bisa langsung cek di sini yaa (jangan lupa klaim ${voucher}):
-👉 ${url}`;
-
-      } else { // personal story
-        angleIdea = `Ulasan Jujur Pemakaian 1 Bulan: ${name}`;
-        mainText = `Mau kasih review jujur setelah hampir sebulan pake ${name}.
-
-Awalnya skeptis karena harganya murah bgt dibanding barang sejenis di mall. Tapi setelah dibawa wara-wiri setiap hari, ternyata tetep kokoh dan nyaman bgt. 
-
-Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seberapa sering barangnya beneran kepake sehari-hari tanpa bikin nyesel.`;
-
-        visualText = `1. Foto produk 'in action' dalam situasi sehari-hari (di kantor, kampus, atau kamar). 2. Foto detail ketahanan barang.`;
-        aiPrompt = `Authentic candid mobile phone photo of ${name} being used in a daily casual lifestyle scene, realistic natural room lighting, high detail, not an advertisement, cozy aesthetic`;
-
-        replyText = `Biar ga ribet nyari nama tokonya, ini link official produknya yaa (ada ${voucher}):
-👉 ${url}`;
+        aiPrompt = `A natural downward smartphone photo showing feet wearing the exact shoes from reference images, waiting on a clean train platform station tiles, casual daily commuters lifestyle vibe, realistic candid shot.`;
       }
+
+      replyText = `Buat yang nanya nama sepatunya atau mau cek model dan ukuran lainnya, link katalog resminya di sini yaa (lagi ada Komisi XTRA & voucher toko aktif):
+👉 ${url}`;
 
       const today = new Date().toISOString().split("T")[0];
 
@@ -639,15 +584,15 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
         name: name,
         category: category,
         url: url,
-        commission: data.commission || "Komisi Toko / XTRA",
-        priceTag: priceTag || "Under 150rb 🔥 Penyelamat Dompet",
+        commission: data.commission || "Komisi XTRA",
+        sceneStory: sceneStory,
+        sceneLabel: sceneLabel,
         status: "Siap Tayang",
         angleIdea: angleIdea,
         mainPost: mainText,
-        visualText: visualText,
         aiPrompt: aiPrompt,
         replyPost: replyText,
-        fullFormatted: `${mainText}\n\n[SARAN VISUAL]\n${visualText}\n\n[PROMPT GAMBAR AI]\n${aiPrompt}\n\n[BALASAN PERTAMA]\n${replyText}`
+        fullFormatted: `${mainText}\n\n[SARAN VISUAL - ${sceneLabel}]\n[PROMPT GAMBAR AI]\n${aiPrompt}\n\n[BALASAN PERTAMA]\n${replyText}`
       };
     }
 
@@ -657,19 +602,14 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
     const inputName = document.getElementById("inputName");
     const inputCategory = document.getElementById("inputCategory");
     const inputCommission = document.getElementById("inputCommission");
-    const inputVoucher = document.getElementById("inputVoucher");
-    const inputPriceTag = document.getElementById("inputPriceTag");
     const mainPostEl = document.getElementById("mainPostContent");
     const replyPostEl = document.getElementById("replyPostContent");
     const aiPromptTextEl = document.getElementById("aiPromptText");
     const sheetRowPreviewEl = document.getElementById("sheetRowPreview");
     const btnTestAffLink = document.getElementById("btnTestAffLink");
+    const currentSceneTagEl = document.getElementById("currentSceneTag");
+    const mainAdaptedImg = document.getElementById("mainAdaptedImg");
     const historyList = document.getElementById("historyList");
-    const canvasBadgeInput = document.getElementById("canvasBadgeInput");
-
-    // Canvas elements
-    const canvas = document.getElementById("posterCanvas");
-    const ctx = canvas.getContext("2d");
 
     // --- TOAST FUNCTION ---
     function showToast(message, icon = "✅") {
@@ -688,107 +628,20 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
       }, 2500);
     }
 
-    // --- CANVAS POSTER RENDERING ---
-    function drawPoster(img) {
-      const w = canvas.width;
-      const h = canvas.height;
-
-      // Draw background
-      ctx.fillStyle = "#11141a";
-      ctx.fillRect(0, 0, w, h);
-
-      // Draw Image with cover fit
-      if (img && img.complete && img.naturalWidth > 0) {
-        const iw = img.naturalWidth;
-        const ih = img.naturalHeight;
-        const scale = Math.max(w / iw, h / ih);
-        const nw = iw * scale;
-        const nh = ih * scale;
-        const ox = (w - nw) / 2;
-        const oy = (h - nh) / 2;
-        ctx.drawImage(img, ox, oy, nw, nh);
-      } else {
-        ctx.fillStyle = "#1f2937";
-        ctx.fillRect(0, 0, w, h);
-      }
-
-      // Draw aesthetic dark gradient overlay at top and bottom
-      const topGrad = ctx.createLinearGradient(0, 0, 0, 100);
-      topGrad.addColorStop(0, "rgba(0, 0, 0, 0.7)");
-      topGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
-      ctx.fillStyle = topGrad;
-      ctx.fillRect(0, 0, w, 100);
-
-      const btmGrad = ctx.createLinearGradient(0, h - 140, 0, h);
-      btmGrad.addColorStop(0, "rgba(0, 0, 0, 0)");
-      btmGrad.addColorStop(1, "rgba(0, 0, 0, 0.85)");
-      ctx.fillStyle = btmGrad;
-      ctx.fillRect(0, h - 140, w, 140);
-
-      // Draw Username Tag Top-Left
-      ctx.fillStyle = "rgba(0,0,0,0.65)";
-      ctx.roundRect ? ctx.roundRect(16, 16, 150, 32, 16) : ctx.rect(16, 16, 150, 32);
-      ctx.fill();
-      ctx.fillStyle = "#ffffff";
-      ctx.font = "bold 13px -apple-system, sans-serif";
-      ctx.fillText("🧵 @ahmediks", 30, 37);
-
-      // Draw Badge Text Pill Bottom
-      const badgeText = canvasBadgeInput.value.trim() || "Under 150rb 🔥";
-      ctx.font = "bold 15px -apple-system, sans-serif";
-      const textMetrics = ctx.measureText(badgeText);
-      const pillWidth = Math.min(w - 40, textMetrics.width + 36);
-      const pillHeight = 42;
-      const pillX = 20;
-      const pillY = h - 60;
-
-      // Badge shadow
-      ctx.shadowColor = "rgba(0, 0, 0, 0.4)";
-      ctx.shadowBlur = 10;
-      ctx.shadowOffsetX = 0;
-      ctx.shadowOffsetY = 4;
-
-      // Badge background pill
-      ctx.fillStyle = badgeBgColor;
-      if (ctx.roundRect) {
-        ctx.beginPath();
-        ctx.roundRect(pillX, pillY, pillWidth, pillHeight, 21);
-        ctx.fill();
-      } else {
-        ctx.fillRect(pillX, pillY, pillWidth, pillHeight);
-      }
-
-      // Reset shadow
-      ctx.shadowColor = "transparent";
-
-      // Badge text
-      ctx.fillStyle = "#ffffff";
-      ctx.font = "bold 15px -apple-system, sans-serif";
-      ctx.fillText(badgeText, pillX + 18, pillY + 26);
-    }
-
-    // Set initial canvas image
-    activeCanvasImage.crossOrigin = "anonymous";
-    activeCanvasImage.src = "assets/sneakers_pov.jpg";
-    activeCanvasImage.onload = () => drawPoster(activeCanvasImage);
-
     // --- RENDER DRAFT TO UI ---
     function renderDraft(draft) {
       currentDraft = draft;
       mainPostEl.textContent = draft.mainPost;
       replyPostEl.textContent = draft.replyPost;
       aiPromptTextEl.textContent = draft.aiPrompt;
+      currentSceneTagEl.textContent = draft.sceneLabel;
       btnTestAffLink.href = draft.url;
-      canvasBadgeInput.value = draft.priceTag;
 
       // Format row for Google Sheets (Tab-separated)
       const singleLineCopy = draft.fullFormatted.replace(/\r?\n/g, " ");
       const rowString = `${draft.date}\t${draft.name}\t${draft.category}\t${draft.url}\t${draft.commission}\t${draft.status}\t${draft.angleIdea}\t${singleLineCopy}`;
       sheetRowPreviewEl.textContent = `${draft.date} | ${draft.name} | ${draft.category} | ${draft.url} | ${draft.commission} | ${draft.status}`;
       sheetRowPreviewEl.dataset.fullRow = rowString;
-
-      // Redraw canvas with new badge text
-      drawPoster(activeCanvasImage);
     }
 
     // --- CLIPBOARD ACTIONS ---
@@ -809,7 +662,7 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
     document.getElementById("btnCopyAiPrompt").addEventListener("click", () => {
       if (!currentDraft) return;
       navigator.clipboard.writeText(currentDraft.aiPrompt).then(() => {
-        showToast("Prompt Gambar AI disalin! Tempel di ChatGPT / Midjourney / Canva.");
+        showToast("Prompt AI Presisi disalin! Siap tempel di generator AI.");
       });
     });
 
@@ -828,99 +681,67 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
       });
     });
 
-    // --- CANVAS FILE UPLOAD & CONTROLS ---
-    document.getElementById("canvasFileInput").addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const userImg = new Image();
-        userImg.src = event.target.result;
-        userImg.onload = () => {
-          activeCanvasImage = userImg;
-          drawPoster(activeCanvasImage);
-          showToast("Foto produk Anda berhasil dimuat ke Canvas!");
-        };
-      };
-      reader.readAsDataURL(file);
-    });
-
-    document.getElementById("btnUseSampleImage").addEventListener("click", () => {
-      activeCanvasImage.src = "assets/sneakers_pov.jpg";
-      activeCanvasImage.onload = () => {
-        drawPoster(activeCanvasImage);
-        showToast("Foto contoh dimuat ulang.");
-      };
-    });
-
-    canvasBadgeInput.addEventListener("input", () => {
-      drawPoster(activeCanvasImage);
-    });
-
-    document.querySelectorAll(".btn-theme-badge").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        badgeBgColor = e.target.dataset.color;
-        drawPoster(activeCanvasImage);
-      });
-    });
-
-    document.getElementById("btnDownloadPoster").addEventListener("click", () => {
-      const dataUrl = canvas.toDataURL("image/jpeg", 0.92);
-      const a = document.createElement("a");
-      a.href = dataUrl;
-      a.download = `threads_poster_${Date.now()}.jpg`;
-      a.click();
-      showToast("Poster Threads berhasil diunduh!", "⬇️");
-    });
-
     // --- FORM SUBMISSION ---
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const selectedFormula = document.querySelector('input[name="formula"]:checked')?.value || "curhat";
+      const selectedScene = document.querySelector('input[name="sceneStory"]:checked')?.value || "jogging";
 
       const data = {
         url: inputUrl.value.trim(),
         name: inputName.value.trim(),
         category: inputCategory.value,
         commission: inputCommission.value.trim(),
-        voucher: inputVoucher.value.trim(),
-        priceTag: inputPriceTag.value.trim(),
-        formula: selectedFormula
+        formula: selectedFormula,
+        sceneStory: selectedScene
       };
 
-      const draft = generateCopy(data);
+      const draft = generateMultiAngleContent(data);
       renderDraft(draft);
-      showToast("Naskah & Visual Threads berhasil digenerate!");
+      showToast("Naskah & Visual berhasil diadaptasi ke alur cerita!");
     });
 
-    // --- QUICK SAMPLE BUTTON ---
-    document.getElementById("btnQuickSample").addEventListener("click", () => {
-      inputUrl.value = defaultData.url;
-      inputName.value = defaultData.name;
-      inputCategory.value = defaultData.category;
-      inputCommission.value = defaultData.commission;
-      inputVoucher.value = defaultData.voucher;
-      inputPriceTag.value = defaultData.priceTag;
-      document.querySelector(`input[name="formula"][value="${defaultData.formula}"]`).checked = true;
+    // --- QUICK LOAD MISTFLOW BUTTON ---
+    document.getElementById("btnQuickMistflow").addEventListener("click", () => {
+      inputUrl.value = mistflowData.url;
+      inputName.value = mistflowData.name;
+      inputCategory.value = mistflowData.category;
+      inputCommission.value = mistflowData.commission;
+      document.querySelector(`input[name="formula"][value="${mistflowData.formula}"]`).checked = true;
+      document.querySelector(`input[name="sceneStory"][value="${mistflowData.sceneStory}"]`).checked = true;
 
-      const draft = generateCopy(defaultData);
+      mainAdaptedImg.src = "assets/mistflow_blue_exact_pov.jpg";
+      document.getElementById("btnDownloadAdaptedImg").href = "assets/mistflow_blue_exact_pov.jpg";
+
+      const draft = generateMultiAngleContent(mistflowData);
       renderDraft(draft);
-      showToast("Contoh produk Lucky Fan Store dimuat!");
+      showToast("Contoh produk Mistflow Blue dimuat!");
     });
 
     // --- RESET BUTTON ---
     document.getElementById("btnReset").addEventListener("click", () => {
       form.reset();
-      inputCommission.value = "Komisi Toko / XTRA";
-      inputVoucher.value = "Voucher Diskon Toko s.d 50rb + Gratis Ongkir XTRA";
-      inputPriceTag.value = "Under 150rb 🔥 Penyelamat Dompet";
+      inputCommission.value = "Komisi XTRA";
       showToast("Formulir direset.", "🔄");
+    });
+
+    // --- CUSTOM ANGLE IMAGE UPLOAD ---
+    document.getElementById("inputCustomAngleFile").addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const thumb = document.getElementById("thumbAngle1");
+        thumb.src = event.target.result;
+        showToast("Foto sudut referensi baru berhasil ditambahkan!");
+      };
+      reader.readAsDataURL(file);
     });
 
     // --- LOCAL STORAGE HISTORY ---
     function getStoredHistory() {
       try {
-        const stored = localStorage.getItem("shopee_threads_history");
+        const stored = localStorage.getItem("shopee_threads_history_v2");
         return stored ? JSON.parse(stored) : [];
       } catch (e) {
         return [];
@@ -932,7 +753,7 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
       history = history.filter(item => item.url !== draft.url);
       history.unshift(draft);
       if (history.length > 15) history.pop();
-      localStorage.setItem("shopee_threads_history", JSON.stringify(history));
+      localStorage.setItem("shopee_threads_history_v2", JSON.stringify(history));
       renderHistoryList();
     }
 
@@ -977,8 +798,7 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
             inputUrl.value = selected.url;
             inputName.value = selected.name;
             inputCategory.value = selected.category;
-            inputCommission.value = selected.commission || "Komisi Toko / XTRA";
-            inputPriceTag.value = selected.priceTag || "Under 150rb 🔥";
+            inputCommission.value = selected.commission || "Komisi XTRA";
             renderDraft(selected);
             showToast(`Draft "${selected.name}" dimuat!`);
           }
@@ -990,7 +810,7 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
           const idx = e.target.dataset.index;
           let h = getStoredHistory();
           h.splice(idx, 1);
-          localStorage.setItem("shopee_threads_history", JSON.stringify(h));
+          localStorage.setItem("shopee_threads_history_v2", JSON.stringify(h));
           renderHistoryList();
           showToast("Item dihapus dari riwayat.", "🗑️");
         });
@@ -1005,7 +825,7 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
 
     document.getElementById("btnClearHistory").addEventListener("click", () => {
       if (confirm("Hapus semua riwayat produk tersimpan?")) {
-        localStorage.removeItem("shopee_threads_history");
+        localStorage.removeItem("shopee_threads_history_v2");
         renderHistoryList();
         showToast("Semua riwayat dibersihkan.", "🗑️");
       }
@@ -1043,7 +863,7 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
 
     // --- INITIALIZE ON LOAD ---
     window.addEventListener("DOMContentLoaded", () => {
-      const initialDraft = generateCopy(defaultData);
+      const initialDraft = generateMultiAngleContent(mistflowData);
       renderDraft(initialDraft);
       
       if (getStoredHistory().length === 0) {
