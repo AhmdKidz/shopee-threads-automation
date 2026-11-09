@@ -1,0 +1,28 @@
+name: Scheduled Threads Reminder & Automation
+
+on:
+  schedule:
+    # Berjalan setiap hari pada pukul 07:00 WIB (00:00 UTC) dan 19:00 WIB (12:00 UTC)
+    - cron: '0 0 * * *'
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-summary:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Threads Formatter Test
+        run: |
+          python scripts/format_threads_copy.py
