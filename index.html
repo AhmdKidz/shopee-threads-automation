@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopee Threads Affiliate Studio | Ahmediks Rayhan</title>
+  <!-- Tailwind CSS via Google GStatic CDN -->
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    /* Custom scrollbar & font smoothing */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .threads-badge {
+      background: linear-gradient(135deg, #000000 0%, #1e1e24 100%);
+    }
+    .shopee-orange {
+      color: #EE4D2D;
+    }
+    .bg-shopee-orange {
+      background-color: #EE4D2D;
+    }
+    .border-shopee-orange {
+      border-color: #EE4D2D;
+    }
+    /* Toast transition */
+    #toast {
+      transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-[#0e1117] text-gray-100 min-h-screen">
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="border-b border-gray-800 bg-[#161b22]/90 backdrop-blur sticky top-0 z-40 px-4 lg:px-8 py-3.5">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-orange-500 via-rose-500 to-amber-400 flex items-center justify-center font-black text-white text-lg shadow-lg shadow-orange-500/20">
+          🧵
+        </div>
+        <div>
+          <h1 class="text-base font-bold text-white tracking-tight flex items-center gap-2">
+            Shopee Threads Studio
+            <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              v1.0 Ready
+            </span>
+          </h1>
+          <p class="text-xs text-gray-400">Mesin Konten Viral Meta Threads & Sync Google Sheets</p>
+        </div>
+      </div>
+
+      <!-- Quick Action Links -->
+      <div class="flex items-center flex-wrap gap-2 text-xs">
+        <a href="https://docs.google.com/spreadsheets/d/1rEtHanEwU0NNDZRwIg6lwPo7SBPvjO2vf8CgD-tyghU/edit" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-950/60 text-emerald-300 border border-emerald-700/50 hover:bg-emerald-900/80 transition">
+          <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H6v-2h6v2zm0-4H6v-2h6v2zm0-4H6V7h6v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/></svg>
+          Buka Database Sheet
+        </a>
+        <a href="https://affiliate.shopee.co.id/dashboard" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-orange-950/60 text-orange-300 border border-orange-700/50 hover:bg-orange-900/80 transition">
+          <span class="text-orange-400 font-bold">🛒</span>
+          Shopee Affiliate
+        </a>
+        <a href="https://github.com/AhmdKidz/shopee-threads-automation" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-800 text-gray-300 border border-gray-700 hover:bg-gray-700 transition">
+          <svg class="w-3.5 h-3.5 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          Repo GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-6">
+
+    <!-- HERO & STATUS BANNER -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-gradient-to-r from-gray-900 to-[#161b22] border border-gray-800 rounded-2xl p-4 flex items-center justify-between shadow-sm">
+        <div class="flex items-center space-x-3">
+          <div class="p-2.5 bg-blue-500/10 text-blue-400 rounded-xl">
+            ⏰
+          </div>
+          <div>
+            <div class="text-xs text-gray-400">Jam Posting Terbaik</div>
+            <div class="text-sm font-semibold text-white" id="bestTimeBadge">07:00 - 09:00 WIB (Pagi)</div>
+          </div>
+        </div>
+        <span class="text-xs px-2 py-1 rounded bg-blue-500/20 text-blue-300 font-mono" id="liveClock">00:00 WIB</span>
+      </div>
+
+      <div class="bg-gradient-to-r from-gray-900 to-[#161b22] border border-gray-800 rounded-2xl p-4 flex items-center justify-between shadow-sm">
+        <div class="flex items-center space-x-3">
+          <div class="p-2.5 bg-emerald-500/10 text-emerald-400 rounded-xl">
+            🛡️
+          </div>
+          <div>
+            <div class="text-xs text-gray-400">Algoritma Safety</div>
+            <div class="text-sm font-semibold text-white">Anti-Shadowban Active</div>
+          </div>
+        </div>
+        <span class="text-xs px-2 py-1 rounded bg-emerald-500/20 text-emerald-400 font-medium">Link di Balasan #1</span>
+      </div>
+
+      <div class="bg-gradient-to-r from-gray-900 to-[#161b22] border border-gray-800 rounded-2xl p-4 flex items-center justify-between shadow-sm">
+        <div class="flex items-center space-x-3">
+          <div class="p-2.5 bg-purple-500/10 text-purple-400 rounded-xl">
+            📊
+          </div>
+          <div>
+            <div class="text-xs text-gray-400">Koleksi Database</div>
+            <div class="text-sm font-semibold text-white" id="dbRowCount">Siap Digunakan</div>
+          </div>
+        </div>
+        <span class="text-xs px-2 py-1 rounded bg-purple-500/20 text-purple-300 font-medium">Google Sheets V4</span>
+      </div>
+    </div>
+
+    <!-- MAIN GRID: GENERATOR & PREVIEW -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+      <!-- LEFT COLUMN: INPUT CONTROLS (5 COLS) -->
+      <section class="lg:col-span-5 bg-[#161b22] border border-gray-800 rounded-2xl p-5 shadow-lg space-y-5">
+        <div class="flex items-center justify-between border-b border-gray-800/80 pb-3">
+          <h2 class="text-base font-bold text-white flex items-center gap-2">
+            <span class="text-orange-500">⚡</span> Parameter Produk
+          </h2>
+          <button id="btnQuickSample" type="button" class="text-xs text-orange-400 hover:text-orange-300 flex items-center gap-1 font-medium transition">
+            🎲 Isi Contoh Cepat
+          </button>
+        </div>
+
+        <form id="generatorForm" class="space-y-4">
+          <!-- Shopee Affiliate URL -->
+          <div>
+            <label class="block text-xs font-medium text-gray-300 mb-1">
+              Link Produk / Toko Shopee Affiliate <span class="text-rose-500">*</span>
+            </label>
+            <div class="relative">
+              <input type="url" id="inputUrl" required
+                     placeholder="https://s.shopee.co.id/xxxxxx atau link Shopee"
+                     class="w-full bg-[#0d1117] border border-gray-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition">
+              <span class="absolute right-3 top-2.5 text-xs text-gray-400">🔗</span>
+            </div>
+            <p class="text-[11px] text-gray-400 mt-1">Gunakan link pendek affiliate (s.shopee.co.id) agar rapi.</p>
+          </div>
+
+          <!-- Product / Store Name -->
+          <div>
+            <label class="block text-xs font-medium text-gray-300 mb-1">
+              Nama Produk / Toko <span class="text-rose-500">*</span>
+            </label>
+            <input type="text" id="inputName" required
+                   placeholder="Contoh: Lucky Fan Store - Sneakers Kasual Korean Style"
+                   class="w-full bg-[#0d1117] border border-gray-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition">
+          </div>
+
+          <!-- Category & Estimated Commission -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-medium text-gray-300 mb-1">Kategori</label>
+              <select id="inputCategory" class="w-full bg-[#0d1117] border border-gray-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-500 transition">
+                <option value="Sepatu Sneakers & Sandal">Sepatu & Sandal</option>
+                <option value="Fashion Pria / Wanita">Fashion & OOTD</option>
+                <option value="Gadget & Aksesoris HP">Gadget & Elektronik</option>
+                <option value="Peralatan Rumah Tangga / Kos">Home & Living / Kos</option>
+                <option value="Skincare & Perawatan Diri">Skincare & Beauty</option>
+                <option value="Alat Tulis & Kantor">Perlengkapan Kerja/Kuliah</option>
+                <option value="Lainnya / Random Racun">Kategori Lainnya</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-300 mb-1">Perkiraan Komisi</label>
+              <input type="text" id="inputCommission"
+                     value="Komisi Toko / XTRA"
+                     placeholder="Contoh: 10% - 15%"
+                     class="w-full bg-[#0d1117] border border-gray-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-500 transition">
+            </div>
+          </div>
+
+          <!-- Voucher / Promo Info -->
+          <div>
+            <label class="block text-xs font-medium text-gray-300 mb-1">Info Diskon / Voucher Toko</label>
+            <input type="text" id="inputVoucher"
+                   placeholder="Contoh: Voucher Diskon 50rb + Free Ongkir XTRA"
+                   value="Voucher Diskon Toko s.d 50rb + Gratis Ongkir XTRA"
+                   class="w-full bg-[#0d1117] border border-gray-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition">
+          </div>
+
+          <!-- Copywriting Formula Selection -->
+          <div>
+            <label class="block text-xs font-medium text-gray-300 mb-1.5">Pilih Formula Copywriting Threads</label>
+            <div class="grid grid-cols-1 gap-2">
+              <label class="flex items-start gap-2.5 p-2.5 rounded-xl border border-orange-500/50 bg-orange-500/10 cursor-pointer transition has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
+                <input type="radio" name="formula" value="curhat" checked class="mt-0.5 text-orange-500 focus:ring-0">
+                <div>
+                  <div class="text-xs font-semibold text-white">1. Curhat Hemat / Smart Shopping (Paling Viral)</div>
+                  <div class="text-[11px] text-gray-400">Keresahan dompet tipis / boncos belanja vs solusi cerdas harga terjangkau.</div>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-2.5 p-2.5 rounded-xl border border-gray-700 bg-gray-800/40 cursor-pointer transition hover:border-gray-600 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
+                <input type="radio" name="formula" value="unpopular" class="mt-0.5 text-orange-500 focus:ring-0">
+                <div>
+                  <div class="text-xs font-semibold text-white">2. Unpopular Opinion / Reality Check</div>
+                  <div class="text-[11px] text-gray-400">Pernyataan kontradiktif yang memicu obrolan/komentar hangat di Threads.</div>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-2.5 p-2.5 rounded-xl border border-gray-700 bg-gray-800/40 cursor-pointer transition hover:border-gray-600 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
+                <input type="radio" name="formula" value="kurasi" class="mt-0.5 text-orange-500 focus:ring-0">
+                <div>
+                  <div class="text-xs font-semibold text-white">3. Kurasi Solutif (Listicle 3 Alasan)</div>
+                  <div class="text-[11px] text-gray-400">Cocok untuk target spesifik (anak kos, ngantor, mahasiswa) dengan poin jelas.</div>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-2.5 p-2.5 rounded-xl border border-gray-700 bg-gray-800/40 cursor-pointer transition hover:border-gray-600 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-500/20">
+                <input type="radio" name="formula" value="story" class="mt-0.5 text-orange-500 focus:ring-0">
+                <div>
+                  <div class="text-xs font-semibold text-white">4. Personal Story / Review Jujur Pemakaian</div>
+                  <div class="text-[11px] text-gray-400">Gaya ulasan pribadi setelah sebulan pakai, jujur dan tanpa kesan jualan.</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Generate & Reset Buttons -->
+          <div class="pt-2 flex items-center gap-3">
+            <button type="submit" id="btnGenerate"
+                    class="flex-1 bg-gradient-to-r from-orange-500 to-rose-600 hover:from-orange-600 hover:to-rose-700 text-white font-bold py-2.5 px-4 rounded-xl shadow-lg shadow-orange-500/20 flex items-center justify-center gap-2 text-sm transition">
+              <span>✨</span> Generate Naskah Viral
+            </button>
+            <button type="button" id="btnReset"
+                    class="px-3 py-2.5 rounded-xl border border-gray-700 text-gray-400 hover:text-white hover:bg-gray-800 text-xs transition">
+              Reset
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- RIGHT COLUMN: LIVE THREADS PREVIEW (7 COLS) -->
+      <section class="lg:col-span-7 space-y-4">
+        
+        <!-- THREADS MOCKUP CONTAINER -->
+        <div class="bg-[#161b22] border border-gray-800 rounded-2xl p-5 shadow-xl space-y-5">
+          <div class="flex items-center justify-between border-b border-gray-800 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <h3 class="text-sm font-bold text-white">Preview Tampilan Meta Threads</h3>
+            </div>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-gray-800 text-gray-400 border border-gray-700">
+              Format: Post Utama + Balasan #1
+            </span>
+          </div>
+
+          <!-- MOCKUP ITEM 1: MAIN POST -->
+          <div class="bg-[#0d1117] border border-gray-700/60 rounded-xl p-4 relative space-y-3">
+            <!-- Author Header -->
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center font-bold text-xs text-white">
+                  AR
+                </div>
+                <div>
+                  <div class="text-xs font-semibold text-white flex items-center gap-1.5">
+                    ahmediks
+                    <svg class="w-3.5 h-3.5 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  </div>
+                  <div class="text-[11px] text-gray-400">Postingan Utama • Tanpa Link Luar</div>
+                </div>
+              </div>
+              <button id="btnCopyMain" type="button"
+                      class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border border-orange-500/30 text-xs font-medium transition">
+                📋 Salin Postingan
+              </button>
+            </div>
+
+            <!-- Main Post Body Content -->
+            <div id="mainPostContent" class="text-sm text-gray-200 leading-relaxed whitespace-pre-line py-1 font-sans">
+              Jujur, semenjak kuliah/kerja udah ga pernah lagi gengsi beli sneakers jutaan cuma buat daily walk atau tempur di jalanan.
+
+              Asal solnya empuk, modelnya ga norak, dan harganya under 150rb udah lebih dari cukup. Kemarin nemu toko Lucky Fan Store ini pas lagi iseng nyari sepatu santai, ternyata banyak model Korean style yang estetik bgt dan ga gampang jebol.
+
+              Daripada boncos tiap bulan beli sepatu mahal cuma buat harian, ini penyelamat dompet bgt sih 😭
+            </div>
+
+            <!-- Visual Suggestions Card -->
+            <div id="visualBox" class="bg-gray-800/40 border border-gray-700/60 rounded-lg p-3 text-xs text-amber-300/90 flex items-start gap-2">
+              <span class="text-base">📸</span>
+              <div>
+                <strong class="font-semibold text-amber-200">Saran Visual Threads:</strong>
+                <span id="visualText" class="text-gray-300 ml-1">
+                  1. Foto POV dari atas kaki lagi pakai sepatu (gaya santai OOTD). 2. Foto close-up sol & jahitan sepatu.
+                </span>
+              </div>
+            </div>
+
+            <!-- Threads Action Icons (Mock) -->
+            <div class="flex items-center gap-4 text-gray-400 text-xs pt-1 border-t border-gray-800/60">
+              <span class="hover:text-red-400 cursor-pointer flex items-center gap-1">❤️ Suka</span>
+              <span class="hover:text-blue-400 cursor-pointer flex items-center gap-1">💬 Balas</span>
+              <span class="hover:text-emerald-400 cursor-pointer flex items-center gap-1">🔄 Repost</span>
+              <span class="hover:text-white cursor-pointer ml-auto text-[11px]">Bebas Shadowban 🛡️</span>
+            </div>
+          </div>
+
+          <!-- CONNECTOR LINE -->
+          <div class="flex items-center justify-center -my-2">
+            <div class="h-6 w-0.5 bg-gray-700"></div>
+          </div>
+
+          <!-- MOCKUP ITEM 2: FIRST REPLY (WITH AFFILIATE LINK) -->
+          <div class="bg-[#0d1117] border border-orange-900/40 rounded-xl p-4 space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center font-bold text-xs text-white">
+                  AR
+                </div>
+                <div>
+                  <div class="text-xs font-semibold text-white">ahmediks <span class="text-gray-400 font-normal">• Balasan Pertama (Komentar Anda)</span></div>
+                  <div class="text-[11px] text-orange-400">Tautan Affiliate Berkonversi Tinggi</div>
+                </div>
+              </div>
+              <button id="btnCopyReply" type="button"
+                      class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-medium transition">
+                📋 Salin Balasan
+              </button>
+            </div>
+
+            <div id="replyPostContent" class="text-sm text-gray-200 leading-relaxed whitespace-pre-line py-1">
+              Spill racunnya di sini yaa! Sumpah ini worth it bgt buat dipake daily 🫶✨
+
+              Mumpung tokonya lagi ada Voucher Diskon Toko s.d 50rb + Gratis Ongkir XTRA:
+              👉 https://s.shopee.co.id/3B8qMvggvL
+            </div>
+
+            <div class="flex items-center justify-between pt-1 text-xs">
+              <a id="btnTestAffLink" href="https://s.shopee.co.id/3B8qMvggvL" target="_blank" rel="noopener noreferrer"
+                 class="text-orange-400 hover:text-orange-300 underline font-mono text-[11px] flex items-center gap-1">
+                ↗️ Tes Buka Tautan Produk
+              </a>
+              <span class="text-[11px] text-gray-500">CTA Halus & Ramah</span>
+            </div>
+          </div>
+
+          <!-- SYNC TO SPREADSHEET TOOLBAR -->
+          <div class="bg-gradient-to-r from-emerald-950/40 to-gray-900 border border-emerald-800/40 rounded-xl p-4 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <h4 class="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
+                  <span>📊</span> Sinkronisasi ke Database Google Sheets
+                </h4>
+                <p class="text-[11px] text-gray-400">Salin 1 baris terformat untuk langsung ditempel di spreadsheet Anda.</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button id="btnCopySheetRow" type="button"
+                        class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition flex items-center gap-1.5 shadow-md shadow-emerald-700/20">
+                  📋 Salin 1 Baris Sheet
+                </button>
+                <a href="https://docs.google.com/spreadsheets/d/1rEtHanEwU0NNDZRwIg6lwPo7SBPvjO2vf8CgD-tyghU/edit" target="_blank"
+                   class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 text-xs font-medium transition">
+                  ↗️ Buka Sheet
+                </a>
+              </div>
+            </div>
+
+            <!-- Preview Data Row Table -->
+            <div class="bg-[#090d13] p-2.5 rounded-lg border border-gray-800 overflow-x-auto text-[11px] font-mono text-gray-300">
+              <span class="text-gray-500 select-none">Kolom [A:H]: </span>
+              <span id="sheetRowPreview" class="text-emerald-400"></span>
+            </div>
+          </div>
+
+          <!-- SECONDARY ACTIONS -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <button id="btnSaveLocal" type="button"
+                    class="px-3.5 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 text-xs font-medium transition flex items-center gap-1.5">
+              💾 Simpan ke Riwayat Saya
+            </button>
+
+            <button id="btnCopyAll" type="button"
+                    class="px-3.5 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 text-xs font-medium transition flex items-center gap-1.5">
+              📑 Salin Semua (Post + Balasan + Visual)
+            </button>
+          </div>
+
+        </div>
+
+        <!-- RECENT LOCALLY SAVED PRODUCTS -->
+        <div class="bg-[#161b22] border border-gray-800 rounded-2xl p-4 shadow-lg space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xs font-bold text-white flex items-center gap-2">
+              <span>🗂️</span> Riwayat Produk Tersimpan (Local Storage)
+            </h3>
+            <button id="btnClearHistory" type="button" class="text-[11px] text-gray-500 hover:text-red-400 transition">
+              Hapus Semua
+            </button>
+          </div>
+          <div id="historyList" class="space-y-2 max-h-48 overflow-y-auto pr-1">
+            <!-- Dynamic history rows will be inserted here -->
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- THREADS POSTING CHEATSHEET & TIPS -->
+    <div class="bg-[#161b22] border border-gray-800 rounded-2xl p-5 shadow-sm space-y-3">
+      <h3 class="text-sm font-bold text-white flex items-center gap-2">
+        <span>💡</span> Tips Algoritma Meta Threads untuk Shopee Affiliate
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-gray-300">
+        <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800 space-y-1">
+          <div class="font-semibold text-orange-400">1. Formula Hook "Relatable"</div>
+          <p class="text-gray-400">Threads mengutamakan interaksi & dwell time. Hindari kalimat jualan langsung; mulai dengan keluhan harga, perbandingan gaya hidup, atau penemuan barang tak terduga.</p>
+        </div>
+        <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800 space-y-1">
+          <div class="font-semibold text-emerald-400">2. Aturan Tautan Pertama</div>
+          <p class="text-gray-400">Jangan cantumkan link affiliate di postingan utama. Taruh di balasan pertama (reply) dalam 30 detik setelah postingan utama tayang agar tidak ditekan algoritma.</p>
+        </div>
+        <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800 space-y-1">
+          <div class="font-semibold text-blue-400">3. Jadwal Optimal Posting</div>
+          <p class="text-gray-400">Traffic Threads Indonesia paling tinggi di pagi hari (07:00-09:00 WIB waktu transit/sarapan) dan malam santai (19:30-21:30 WIB sebelum tidur).</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 pointer-events-none z-50 bg-emerald-600 text-white px-4 py-2.5 rounded-xl shadow-2xl flex items-center gap-2 text-xs font-semibold">
+    <span id="toastIcon">✅</span>
+    <span id="toastMsg">Teks berhasil disalin!</span>
+  </div>
+
+  <!-- JAVASCRIPT ENGINE -->
+  <script>
+    // --- STATE & INITIAL DATA ---
+    const defaultData = {
+      url: "https://s.shopee.co.id/3B8qMvggvL",
+      name: "Lucky Fan Store - Sneakers Kasual Korean Style",
+      category: "Sepatu Sneakers & Sandal",
+      commission: "Komisi Toko / XTRA",
+      voucher: "Voucher Diskon Toko s.d 50rb + Gratis Ongkir XTRA",
+      formula: "curhat"
+    };
+
+    let currentDraft = null;
+
+    // --- TEMPLATE ENGINE ---
+    function generateCopy(data) {
+      const { url, name, category, voucher, formula } = data;
+      let mainText = "";
+      let visualText = "";
+      let replyText = "";
+      let angleIdea = "";
+
+      if (formula === "curhat") {
+        angleIdea = `Rekomendasi Hemat & Solutif: ${name}`;
+        mainText = `Jujur, semenjak kerja/kuliah udah ga pernah lagi gengsi beli barang jutaan cuma buat daily walk atau tempur di jalanan.
+
+Asal kualitasnya awet, modelnya ga norak, dan harganya bener-bener ramah di kantong, udah lebih dari cukup bgt. Kemarin nemu ${name} ini pas lagi iseng nyari alternatif hemat, ternyata pas barangnya sampe bikin kaget bgt kualitasnya 😭🔥
+
+Daripada boncos tiap bulan beli barang mahal cuma buat harian, ini asli lifehack penyelamat dompet bgt sih.`;
+
+        visualText = `1. Foto POV produk saat sedang dipakai/ditaruh di meja estetik. 2. Foto close-up material/detail kualitasnya.`;
+        
+        replyText = `Spill racunnya di sini yaa! Sumpah ini worth it bgt buat daily 🫶✨
+
+Mumpung tokonya lagi sebar ${voucher}:
+👉 ${url}`;
+
+      } else if (formula === "unpopular") {
+        angleIdea = `Debat Kualitas vs Gengsi Mahal: ${name}`;
+        mainText = `Unpopular opinion: banyak barang mahal itu cuma menang di logo dan gengsi doang.
+
+Kemarin nyoba beli ${name} yang harganya terjangkau bgt. Ekspektasi awal ya standar aja, tapi pas dateng malah kepake hampir tiap hari karena nyaman dan bahannya solid.
+
+Ternyata kalau pinter nyari toko lokal di Shopee, kita bisa dapet kualitas setara harga 3x lipatnya tanpa bikin rekening boncos. Menurut kalian masih worth it ga sih beli brand mahal cuma buat daily?`;
+
+        visualText = `1. Foto perbandingan sebelum/sesudah atau foto produk dengan latar polos minimalis. 2. Foto unboxing kemasan toko.`;
+
+        replyText = `Buat yang penasaran sama nama tokonya, cek langsung di sini yaa (lagi promo + ${voucher}):
+👉 ${url}`;
+
+      } else if (formula === "kurasi") {
+        angleIdea = `3 Alasan Kenapa Wajib Punya: ${name}`;
+        mainText = `Buat yang lagi nyari rekomendasi ${category.toLowerCase()} yang awet tapi harganya under budget:
+
+Ini 3 alasan kenapa ${name} ini layak masuk keranjang:
+1. Materialnya di atas rata-rata harga sekelasnya (ga ringkih).
+2. Cutting / desainnya netral, gampang di-mix-and-match buat kuliah atau ngantor.
+3. Review pembelinya rata-rata bintang 4.9 dan packingnya aman bgt.
+
+Definisi nemu hidden gem lokal di Shopee 🛍️✨`;
+
+        visualText = `1. Foto grid 2-3 varian warna produk yang paling estetik. 2. Screenshot rating/review puas dari pembeli.`;
+
+        replyText = `Link produk dan katalog lengkapnya bisa langsung cek di sini yaa (jangan lupa klaim ${voucher}):
+👉 ${url}`;
+
+      } else { // personal story
+        angleIdea = `Ulasan Jujur Pemakaian 1 Bulan: ${name}`;
+        mainText = `Mau kasih review jujur setelah hampir sebulan pake ${name}.
+
+Awalnya skeptis karena harganya murah bgt dibanding barang sejenis di mall. Tapi setelah dibawa wara-wiri setiap hari, ternyata tetep kokoh dan nyaman bgt. 
+
+Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seberapa sering barangnya beneran kepake sehari-hari tanpa bikin nyesel.`;
+
+        visualText = `1. Foto produk 'in action' dalam situasi sehari-hari (di kantor, kampus, atau kamar). 2. Foto detail ketahanan barang.`;
+
+        replyText = `Biar ga ribet nyari nama tokonya, ini link official produknya yaa (ada ${voucher}):
+👉 ${url}`;
+      }
+
+      const today = new Date().toISOString().split("T")[0];
+
+      return {
+        date: today,
+        name: name,
+        category: category,
+        url: url,
+        commission: data.commission || "Komisi Toko / XTRA",
+        status: "Siap Tayang",
+        angleIdea: angleIdea,
+        mainPost: mainText,
+        visualText: visualText,
+        replyPost: replyText,
+        fullFormatted: `${mainText}\n\n[SARAN VISUAL]\n${visualText}\n\n[BALASAN PERTAMA]\n${replyText}`
+      };
+    }
+
+    // --- DOM ELEMENTS ---
+    const form = document.getElementById("generatorForm");
+    const inputUrl = document.getElementById("inputUrl");
+    const inputName = document.getElementById("inputName");
+    const inputCategory = document.getElementById("inputCategory");
+    const inputCommission = document.getElementById("inputCommission");
+    const inputVoucher = document.getElementById("inputVoucher");
+    const mainPostEl = document.getElementById("mainPostContent");
+    const visualTextEl = document.getElementById("visualText");
+    const replyPostEl = document.getElementById("replyPostContent");
+    const sheetRowPreviewEl = document.getElementById("sheetRowPreview");
+    const btnTestAffLink = document.getElementById("btnTestAffLink");
+    const historyList = document.getElementById("historyList");
+
+    // --- TOAST FUNCTION ---
+    function showToast(message, icon = "✅") {
+      const toast = document.getElementById("toast");
+      const toastMsg = document.getElementById("toastMsg");
+      const toastIcon = document.getElementById("toastIcon");
+
+      toastMsg.textContent = message;
+      toastIcon.textContent = icon;
+      toast.classList.remove("translate-y-20", "opacity-0");
+      toast.classList.add("translate-y-0", "opacity-100");
+
+      setTimeout(() => {
+        toast.classList.remove("translate-y-0", "opacity-100");
+        toast.classList.add("translate-y-20", "opacity-0");
+      }, 2500);
+    }
+
+    // --- RENDER DRAFT TO UI ---
+    function renderDraft(draft) {
+      currentDraft = draft;
+      mainPostEl.textContent = draft.mainPost;
+      visualTextEl.textContent = draft.visualText;
+      replyPostEl.textContent = draft.replyPost;
+      btnTestAffLink.href = draft.url;
+
+      // Format row for Google Sheets (Tab-separated)
+      // Columns: Tanggal | Nama Toko / Produk | Kategori | Link Affiliate | Perkiraan Komisi | Status Konten | Ide Sudut Promosi | Draf Naskah Threads
+      const singleLineCopy = draft.fullFormatted.replace(/\r?\n/g, " ");
+      const rowString = `${draft.date}\t${draft.name}\t${draft.category}\t${draft.url}\t${draft.commission}\t${draft.status}\t${draft.angleIdea}\t${singleLineCopy}`;
+      sheetRowPreviewEl.textContent = `${draft.date} | ${draft.name} | ${draft.category} | ${draft.url} | ${draft.commission} | ${draft.status}`;
+      sheetRowPreviewEl.dataset.fullRow = rowString;
+    }
+
+    // --- CLIPBOARD ACTIONS ---
+    document.getElementById("btnCopyMain").addEventListener("click", () => {
+      if (!currentDraft) return;
+      navigator.clipboard.writeText(currentDraft.mainPost).then(() => {
+        showToast("Postingan Utama disalin! Siap tempel di Threads.");
+      });
+    });
+
+    document.getElementById("btnCopyReply").addEventListener("click", () => {
+      if (!currentDraft) return;
+      navigator.clipboard.writeText(currentDraft.replyPost).then(() => {
+        showToast("Balasan Pertama disalin! Siap tempel di kolom komentar.");
+      });
+    });
+
+    document.getElementById("btnCopyAll").addEventListener("click", () => {
+      if (!currentDraft) return;
+      navigator.clipboard.writeText(currentDraft.fullFormatted).then(() => {
+        showToast("Draf Lengkap disalin untuk arsip!");
+      });
+    });
+
+    document.getElementById("btnCopySheetRow").addEventListener("click", () => {
+      if (!currentDraft) return;
+      const row = sheetRowPreviewEl.dataset.fullRow;
+      navigator.clipboard.writeText(row).then(() => {
+        showToast("1 Baris Google Sheets disalin! Tinggal Ctrl+V di Sheet1.");
+      });
+    });
+
+    // --- FORM SUBMISSION ---
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const selectedFormula = document.querySelector('input[name="formula"]:checked')?.value || "curhat";
+
+      const data = {
+        url: inputUrl.value.trim(),
+        name: inputName.value.trim(),
+        category: inputCategory.value,
+        commission: inputCommission.value.trim(),
+        voucher: inputVoucher.value.trim(),
+        formula: selectedFormula
+      };
+
+      const draft = generateCopy(data);
+      renderDraft(draft);
+      showToast("Naskah Threads berhasil digenerate!");
+    });
+
+    // --- QUICK SAMPLE BUTTON ---
+    document.getElementById("btnQuickSample").addEventListener("click", () => {
+      inputUrl.value = defaultData.url;
+      inputName.value = defaultData.name;
+      inputCategory.value = defaultData.category;
+      inputCommission.value = defaultData.commission;
+      inputVoucher.value = defaultData.voucher;
+      document.querySelector(`input[name="formula"][value="${defaultData.formula}"]`).checked = true;
+
+      const draft = generateCopy(defaultData);
+      renderDraft(draft);
+      showToast("Contoh produk Lucky Fan Store dimuat!");
+    });
+
+    // --- RESET BUTTON ---
+    document.getElementById("btnReset").addEventListener("click", () => {
+      form.reset();
+      inputCommission.value = "Komisi Toko / XTRA";
+      inputVoucher.value = "Voucher Diskon Toko s.d 50rb + Gratis Ongkir XTRA";
+      showToast("Formulir direset.", "🔄");
+    });
+
+    // --- LOCAL STORAGE HISTORY ---
+    function getStoredHistory() {
+      try {
+        const stored = localStorage.getItem("shopee_threads_history");
+        return stored ? JSON.parse(stored) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveToHistory(draft) {
+      let history = getStoredHistory();
+      // Remove existing if matching URL
+      history = history.filter(item => item.url !== draft.url);
+      history.unshift(draft);
+      if (history.length > 15) history.pop();
+      localStorage.setItem("shopee_threads_history", JSON.stringify(history));
+      renderHistoryList();
+    }
+
+    function renderHistoryList() {
+      const history = getStoredHistory();
+      historyList.innerHTML = "";
+
+      if (history.length === 0) {
+        historyList.innerHTML = `
+          <div class="text-xs text-gray-500 text-center py-4">
+            Belum ada produk yang disimpan di riwayat lokal.
+          </div>
+        `;
+        return;
+      }
+
+      history.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = "p-2.5 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-between text-xs hover:border-gray-700 transition";
+        card.innerHTML = `
+          <div class="truncate max-w-[70%]">
+            <div class="font-semibold text-white truncate">${item.name}</div>
+            <div class="text-[11px] text-gray-400 truncate">${item.category} • ${item.date}</div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button class="btn-load-history px-2 py-1 rounded bg-orange-500/20 text-orange-400 hover:bg-orange-500/30 font-medium" data-index="${index}">
+              Muat
+            </button>
+            <button class="btn-del-history px-2 py-1 rounded bg-gray-800 text-gray-400 hover:text-red-400" data-index="${index}">
+              ✕
+            </button>
+          </div>
+        `;
+        historyList.appendChild(card);
+      });
+
+      // Bind events
+      document.querySelectorAll(".btn-load-history").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const idx = e.target.dataset.index;
+          const selected = history[idx];
+          if (selected) {
+            inputUrl.value = selected.url;
+            inputName.value = selected.name;
+            inputCategory.value = selected.category;
+            inputCommission.value = selected.commission || "Komisi Toko / XTRA";
+            renderDraft(selected);
+            showToast(`Draft "${selected.name}" dimuat!`);
+          }
+        });
+      });
+
+      document.querySelectorAll(".btn-del-history").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const idx = e.target.dataset.index;
+          let h = getStoredHistory();
+          h.splice(idx, 1);
+          localStorage.setItem("shopee_threads_history", JSON.stringify(h));
+          renderHistoryList();
+          showToast("Item dihapus dari riwayat.", "🗑️");
+        });
+      });
+    }
+
+    document.getElementById("btnSaveLocal").addEventListener("click", () => {
+      if (!currentDraft) return;
+      saveToHistory(currentDraft);
+      showToast("Tersimpan ke Riwayat Lokal!");
+    });
+
+    document.getElementById("btnClearHistory").addEventListener("click", () => {
+      if (confirm("Hapus semua riwayat produk tersimpan?")) {
+        localStorage.removeItem("shopee_threads_history");
+        renderHistoryList();
+        showToast("Semua riwayat dibersihkan.", "🗑️");
+      }
+    });
+
+    // --- CLOCK & TIMING INDICATOR ---
+    function updateClock() {
+      const now = new Date();
+      // Format to WIB (UTC+7)
+      const options = { timeZone: "Asia/Jakarta", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false };
+      const timeStr = now.toLocaleTimeString("id-ID", options);
+      const clockEl = document.getElementById("liveClock");
+      if (clockEl) clockEl.textContent = `${timeStr} WIB`;
+
+      const hours = parseInt(timeStr.split(":")[0], 10);
+      const badgeEl = document.getElementById("bestTimeBadge");
+      if (badgeEl) {
+        if (hours >= 7 && hours <= 9) {
+          badgeEl.textContent = "🔥 Waktu Prime Pagi (07:00-09:00 WIB)";
+          badgeEl.className = "text-sm font-semibold text-emerald-400";
+        } else if (hours >= 12 && hours <= 13) {
+          badgeEl.textContent = "⚡ Waktu Istirahat Siang (12:00-13:00 WIB)";
+          badgeEl.className = "text-sm font-semibold text-amber-400";
+        } else if (hours >= 19 && hours <= 22) {
+          badgeEl.textContent = "🌙 Waktu Prime Malam (19:00-22:00 WIB)";
+          badgeEl.className = "text-sm font-semibold text-purple-400";
+        } else {
+          badgeEl.textContent = "Standby (Optimal Pagi 07-09 / Malam 19-22)";
+          badgeEl.className = "text-sm font-semibold text-gray-300";
+        }
+      }
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // --- INITIALIZE ON LOAD ---
+    window.addEventListener("DOMContentLoaded", () => {
+      const initialDraft = generateCopy(defaultData);
+      renderDraft(initialDraft);
+      
+      // Pre-seed history if empty
+      if (getStoredHistory().length === 0) {
+        saveToHistory(initialDraft);
+      } else {
+        renderHistoryList();
+      }
+    });
+  </script>
+</body>
+</html>
