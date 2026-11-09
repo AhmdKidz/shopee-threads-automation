@@ -7,26 +7,20 @@
   <!-- Tailwind CSS via Google GStatic CDN -->
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
-    /* Custom scrollbar & font smoothing */
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
-    .threads-badge {
-      background: linear-gradient(135deg, #000000 0%, #1e1e24 100%);
-    }
-    .shopee-orange {
-      color: #EE4D2D;
-    }
-    .bg-shopee-orange {
-      background-color: #EE4D2D;
-    }
-    .border-shopee-orange {
-      border-color: #EE4D2D;
-    }
-    /* Toast transition */
     #toast {
       transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #374151;
+      border-radius: 4px;
     }
   </style>
 </head>
@@ -43,10 +37,10 @@
           <h1 class="text-base font-bold text-white tracking-tight flex items-center gap-2">
             Shopee Threads Studio
             <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-              v1.0 Ready
+              v1.1 Visual Studio
             </span>
           </h1>
-          <p class="text-xs text-gray-400">Mesin Konten Viral Meta Threads & Sync Google Sheets</p>
+          <p class="text-xs text-gray-400">Mesin Konten Viral Meta Threads + Creator Visual & Sync Google Sheets</p>
         </div>
       </div>
 
@@ -78,9 +72,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <div class="bg-gradient-to-r from-gray-900 to-[#161b22] border border-gray-800 rounded-2xl p-4 flex items-center justify-between shadow-sm">
         <div class="flex items-center space-x-3">
-          <div class="p-2.5 bg-blue-500/10 text-blue-400 rounded-xl">
-            ⏰
-          </div>
+          <div class="p-2.5 bg-blue-500/10 text-blue-400 rounded-xl">⏰</div>
           <div>
             <div class="text-xs text-gray-400">Jam Posting Terbaik</div>
             <div class="text-sm font-semibold text-white" id="bestTimeBadge">07:00 - 09:00 WIB (Pagi)</div>
@@ -91,9 +83,7 @@
 
       <div class="bg-gradient-to-r from-gray-900 to-[#161b22] border border-gray-800 rounded-2xl p-4 flex items-center justify-between shadow-sm">
         <div class="flex items-center space-x-3">
-          <div class="p-2.5 bg-emerald-500/10 text-emerald-400 rounded-xl">
-            🛡️
-          </div>
+          <div class="p-2.5 bg-emerald-500/10 text-emerald-400 rounded-xl">🛡️</div>
           <div>
             <div class="text-xs text-gray-400">Algoritma Safety</div>
             <div class="text-sm font-semibold text-white">Anti-Shadowban Active</div>
@@ -104,15 +94,13 @@
 
       <div class="bg-gradient-to-r from-gray-900 to-[#161b22] border border-gray-800 rounded-2xl p-4 flex items-center justify-between shadow-sm">
         <div class="flex items-center space-x-3">
-          <div class="p-2.5 bg-purple-500/10 text-purple-400 rounded-xl">
-            📊
-          </div>
+          <div class="p-2.5 bg-purple-500/10 text-purple-400 rounded-xl">🎨</div>
           <div>
-            <div class="text-xs text-gray-400">Koleksi Database</div>
-            <div class="text-sm font-semibold text-white" id="dbRowCount">Siap Digunakan</div>
+            <div class="text-xs text-gray-400">Visual Generator</div>
+            <div class="text-sm font-semibold text-white">UGC & Canvas Active</div>
           </div>
         </div>
-        <span class="text-xs px-2 py-1 rounded bg-purple-500/20 text-purple-300 font-medium">Google Sheets V4</span>
+        <span class="text-xs px-2 py-1 rounded bg-purple-500/20 text-purple-300 font-medium">Foto Siap Pakai</span>
       </div>
     </div>
 
@@ -187,6 +175,15 @@
                    class="w-full bg-[#0d1117] border border-gray-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition">
           </div>
 
+          <!-- Price Highlight for Visuals -->
+          <div>
+            <label class="block text-xs font-medium text-gray-300 mb-1">Label Tag Harga / Highlight (Untuk Poster Visual)</label>
+            <input type="text" id="inputPriceTag"
+                   placeholder="Contoh: Under 150rb ✨ atau Hemat 60%"
+                   value="Under 150rb 🔥 Penyelamat Dompet"
+                   class="w-full bg-[#0d1117] border border-gray-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition">
+          </div>
+
           <!-- Copywriting Formula Selection -->
           <div>
             <label class="block text-xs font-medium text-gray-300 mb-1.5">Pilih Formula Copywriting Threads</label>
@@ -229,7 +226,7 @@
           <div class="pt-2 flex items-center gap-3">
             <button type="submit" id="btnGenerate"
                     class="flex-1 bg-gradient-to-r from-orange-500 to-rose-600 hover:from-orange-600 hover:to-rose-700 text-white font-bold py-2.5 px-4 rounded-xl shadow-lg shadow-orange-500/20 flex items-center justify-center gap-2 text-sm transition">
-              <span>✨</span> Generate Naskah Viral
+              <span>✨</span> Generate Naskah & Visual
             </button>
             <button type="button" id="btnReset"
                     class="px-3 py-2.5 rounded-xl border border-gray-700 text-gray-400 hover:text-white hover:bg-gray-800 text-xs transition">
@@ -285,15 +282,67 @@
               Daripada boncos tiap bulan beli sepatu mahal cuma buat harian, ini penyelamat dompet bgt sih 😭
             </div>
 
-            <!-- Visual Suggestions Card -->
-            <div id="visualBox" class="bg-gray-800/40 border border-gray-700/60 rounded-lg p-3 text-xs text-amber-300/90 flex items-start gap-2">
-              <span class="text-base">📸</span>
-              <div>
-                <strong class="font-semibold text-amber-200">Saran Visual Threads:</strong>
-                <span id="visualText" class="text-gray-300 ml-1">
-                  1. Foto POV dari atas kaki lagi pakai sepatu (gaya santai OOTD). 2. Foto close-up sol & jahitan sepatu.
+            <!-- VISUAL ATTACHMENTS (CAROUSEL GRID) -->
+            <div class="space-y-2 pt-1">
+              <div class="flex items-center justify-between text-xs text-gray-400">
+                <span class="font-semibold text-amber-300 flex items-center gap-1">
+                  📸 Rekomendasi Visual Siap Pakai (2 Angle Foto):
                 </span>
+                <span class="text-[11px] text-gray-500">Klik untuk unduh / gunakan</span>
               </div>
+
+              <!-- PHOTO GRID -->
+              <div class="grid grid-cols-2 gap-3" id="visualPhotosContainer">
+                <!-- Angle 1: POV Street Lifestyle -->
+                <div class="group relative rounded-xl overflow-hidden border border-gray-700 bg-gray-900 aspect-square shadow-md">
+                  <img id="imgVisualPov" src="assets/sneakers_pov.jpg" alt="Foto POV Threads"
+                       class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-2.5">
+                    <span class="text-[11px] font-bold text-white flex items-center gap-1">
+                      🚶 Angle 1: POV Casual Lifestyle
+                    </span>
+                    <span class="text-[10px] text-gray-300">Fotorealistik ponsel pintar ala For You Threads</span>
+                    <a id="btnDlPov" href="assets/sneakers_pov.jpg" download="threads_visual_pov.jpg"
+                       class="mt-1.5 w-full py-1 rounded bg-orange-600/90 hover:bg-orange-500 text-white text-[11px] font-semibold text-center transition">
+                      ⬇️ Unduh Foto Ini
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Angle 2: Close-up Quality -->
+                <div class="group relative rounded-xl overflow-hidden border border-gray-700 bg-gray-900 aspect-square shadow-md">
+                  <img id="imgVisualDetail" src="assets/sneakers_detail.jpg" alt="Foto Detail Threads"
+                       class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-2.5">
+                    <span class="text-[11px] font-bold text-white flex items-center gap-1">
+                      🔍 Angle 2: Detail Jahitan & Sol
+                    </span>
+                    <span class="text-[10px] text-gray-300">Membuktikan bahan awet & ga murahan</span>
+                    <a id="btnDlDetail" href="assets/sneakers_detail.jpg" download="threads_visual_detail.jpg"
+                       class="mt-1.5 w-full py-1 rounded bg-orange-600/90 hover:bg-orange-500 text-white text-[11px] font-semibold text-center transition">
+                      ⬇️ Unduh Foto Ini
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- AI IMAGE PROMPT BOX -->
+              <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3 space-y-2 text-xs">
+                <div class="flex items-center justify-between">
+                  <span class="font-semibold text-purple-400 flex items-center gap-1.5">
+                    <span>✨</span> Prompt Generator Gambar AI (Imagen / DALL-E / Midjourney)
+                  </span>
+                  <button id="btnCopyAiPrompt" type="button"
+                          class="px-2.5 py-1 rounded bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 text-[11px] font-semibold transition">
+                    📋 Salin Prompt AI
+                  </button>
+                </div>
+                <div id="aiPromptText" class="p-2 bg-black/40 rounded border border-gray-800/80 text-[11px] font-mono text-gray-300 leading-relaxed whitespace-pre-line">
+                  Aesthetic POV smartphone photography looking down at a person's feet wearing trendy minimalist Korean-style casual sneakers, standing on clean aesthetic urban sidewalk tiles with soft natural golden hour sunlight, authentic UGC social media vibe, realistic casual daily lifestyle
+                </div>
+                <p class="text-[10px] text-gray-400">💡 <em>Tip: Masukkan prompt ini ke ChatGPT Plus, Midjourney, Bing Creator, atau Canva Magic Media untuk membuat foto lifestyle produk baru apa pun.</em></p>
+              </div>
+
             </div>
 
             <!-- Threads Action Icons (Mock) -->
@@ -329,7 +378,7 @@
             </div>
 
             <div id="replyPostContent" class="text-sm text-gray-200 leading-relaxed whitespace-pre-line py-1">
-              Spill racunnya di sini yaa! Sumpah ini worth it bgt buat dipake daily 🫶✨
+              Spill racunnya di sini yaa! Sumpah ini worth it bgt buat daily 🫶✨
 
               Mumpung tokonya lagi ada Voucher Diskon Toko s.d 50rb + Gratis Ongkir XTRA:
               👉 https://s.shopee.co.id/3B8qMvggvL
@@ -387,6 +436,66 @@
 
         </div>
 
+        <!-- VISUAL CARD GENERATOR STUDIO (CANVAS POSTER MAKER) -->
+        <div class="bg-[#161b22] border border-gray-800 rounded-2xl p-5 shadow-lg space-y-4">
+          <div class="flex items-center justify-between border-b border-gray-800 pb-3">
+            <div>
+              <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                <span>🎨</span> Studio Pembuat Poster Visual Threads
+              </h3>
+              <p class="text-[11px] text-gray-400">Buat foto polaroid / banner minimalis dengan stiker badge harga viral.</p>
+            </div>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30">
+              1-Klik Download
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+            <!-- Canvas Preview -->
+            <div class="flex flex-col items-center justify-center bg-[#090d13] p-3 rounded-xl border border-gray-800">
+              <canvas id="posterCanvas" width="450" height="450" class="max-w-full rounded-lg shadow-lg border border-gray-700/60"></canvas>
+            </div>
+
+            <!-- Canvas Controls -->
+            <div class="space-y-3 text-xs">
+              <div>
+                <label class="block text-gray-300 font-medium mb-1">Gunakan Foto Produk:</label>
+                <div class="flex items-center gap-2">
+                  <label class="flex-1 px-3 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 rounded-xl cursor-pointer text-center font-medium transition">
+                    📁 Unggah Foto Dari HP/PC
+                    <input type="file" id="canvasFileInput" accept="image/*" class="hidden">
+                  </label>
+                  <button id="btnUseSampleImage" type="button" class="px-3 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 rounded-xl transition">
+                    🔄 Reset Sample
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-gray-300 font-medium mb-1">Badge Teks Estetik:</label>
+                <input type="text" id="canvasBadgeInput" value="Under 150rb 🔥 Penyelamat Dompet"
+                       class="w-full bg-[#0d1117] border border-gray-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-500 transition">
+              </div>
+
+              <div>
+                <label class="block text-gray-300 font-medium mb-1">Tema Stiker Badge:</label>
+                <div class="grid grid-cols-3 gap-2">
+                  <button type="button" class="btn-theme-badge px-2 py-1.5 rounded-lg bg-orange-500 text-white font-semibold text-[11px]" data-color="#EE4D2D">Shopee Red</button>
+                  <button type="button" class="btn-theme-badge px-2 py-1.5 rounded-lg bg-black text-white border border-gray-700 font-semibold text-[11px]" data-color="#111111">Minimal Dark</button>
+                  <button type="button" class="btn-theme-badge px-2 py-1.5 rounded-lg bg-emerald-600 text-white font-semibold text-[11px]" data-color="#059669">Emerald Safe</button>
+                </div>
+              </div>
+
+              <div class="pt-2">
+                <button id="btnDownloadPoster" type="button"
+                        class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-rose-600 hover:from-orange-600 hover:to-rose-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20 transition">
+                  ⬇️ Unduh Gambar Poster Threads (JPG)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- RECENT LOCALLY SAVED PRODUCTS -->
         <div class="bg-[#161b22] border border-gray-800 rounded-2xl p-4 shadow-lg space-y-3">
           <div class="flex items-center justify-between">
@@ -397,7 +506,7 @@
               Hapus Semua
             </button>
           </div>
-          <div id="historyList" class="space-y-2 max-h-48 overflow-y-auto pr-1">
+          <div id="historyList" class="space-y-2 max-h-48 overflow-y-auto custom-scrollbar pr-1">
             <!-- Dynamic history rows will be inserted here -->
           </div>
         </div>
@@ -409,20 +518,20 @@
     <!-- THREADS POSTING CHEATSHEET & TIPS -->
     <div class="bg-[#161b22] border border-gray-800 rounded-2xl p-5 shadow-sm space-y-3">
       <h3 class="text-sm font-bold text-white flex items-center gap-2">
-        <span>💡</span> Tips Algoritma Meta Threads untuk Shopee Affiliate
+        <span>💡</span> Formula Visual Berkonversi Tinggi di Meta Threads
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-gray-300">
         <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800 space-y-1">
-          <div class="font-semibold text-orange-400">1. Formula Hook "Relatable"</div>
-          <p class="text-gray-400">Threads mengutamakan interaksi & dwell time. Hindari kalimat jualan langsung; mulai dengan keluhan harga, perbandingan gaya hidup, atau penemuan barang tak terduga.</p>
+          <div class="font-semibold text-orange-400">1. Hindari Foto Brosur Toko</div>
+          <p class="text-gray-400">Audiens Threads benci iklan brosur. Gunakan foto bergaya ponsel amatir (UGC) atau foto flatlay dengan pencahayaan jendela alami.</p>
         </div>
         <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800 space-y-1">
-          <div class="font-semibold text-emerald-400">2. Aturan Tautan Pertama</div>
-          <p class="text-gray-400">Jangan cantumkan link affiliate di postingan utama. Taruh di balasan pertama (reply) dalam 30 detik setelah postingan utama tayang agar tidak ditekan algoritma.</p>
+          <div class="font-semibold text-emerald-400">2. Kombinasi 2 Foto (Karusel)</div>
+          <p class="text-gray-400">Pasang 2 foto: 1 foto saat produk sedang dipakai (POV gaya santai), dan 1 foto zoom detail kualitas material untuk memicu dwell-time.</p>
         </div>
         <div class="p-3 bg-gray-900/60 rounded-xl border border-gray-800 space-y-1">
-          <div class="font-semibold text-blue-400">3. Jadwal Optimal Posting</div>
-          <p class="text-gray-400">Traffic Threads Indonesia paling tinggi di pagi hari (07:00-09:00 WIB waktu transit/sarapan) dan malam santai (19:30-21:30 WIB sebelum tidur).</p>
+          <div class="font-semibold text-purple-400">3. Gunakan AI Generator Gambar</div>
+          <p class="text-gray-400">Jika tidak punya produk fisiknya, salin <em>Prompt AI</em> dari dashboard ini lalu generate di ChatGPT/Midjourney dalam hitungan detik!</p>
         </div>
       </div>
     </div>
@@ -444,18 +553,22 @@
       category: "Sepatu Sneakers & Sandal",
       commission: "Komisi Toko / XTRA",
       voucher: "Voucher Diskon Toko s.d 50rb + Gratis Ongkir XTRA",
+      priceTag: "Under 150rb 🔥 Penyelamat Dompet",
       formula: "curhat"
     };
 
     let currentDraft = null;
+    let badgeBgColor = "#EE4D2D";
+    let activeCanvasImage = new Image();
 
     // --- TEMPLATE ENGINE ---
     function generateCopy(data) {
-      const { url, name, category, voucher, formula } = data;
+      const { url, name, category, voucher, formula, priceTag } = data;
       let mainText = "";
       let visualText = "";
       let replyText = "";
       let angleIdea = "";
+      let aiPrompt = "";
 
       if (formula === "curhat") {
         angleIdea = `Rekomendasi Hemat & Solutif: ${name}`;
@@ -466,6 +579,7 @@ Asal kualitasnya awet, modelnya ga norak, dan harganya bener-bener ramah di kant
 Daripada boncos tiap bulan beli barang mahal cuma buat harian, ini asli lifehack penyelamat dompet bgt sih.`;
 
         visualText = `1. Foto POV produk saat sedang dipakai/ditaruh di meja estetik. 2. Foto close-up material/detail kualitasnya.`;
+        aiPrompt = `Aesthetic POV smartphone photography looking down at a person's feet wearing trendy minimalist Korean-style casual sneakers, standing on clean aesthetic urban sidewalk tiles with soft natural golden hour sunlight, authentic UGC social media vibe, realistic casual daily lifestyle`;
         
         replyText = `Spill racunnya di sini yaa! Sumpah ini worth it bgt buat daily 🫶✨
 
@@ -481,6 +595,7 @@ Kemarin nyoba beli ${name} yang harganya terjangkau bgt. Ekspektasi awal ya stan
 Ternyata kalau pinter nyari toko lokal di Shopee, kita bisa dapet kualitas setara harga 3x lipatnya tanpa bikin rekening boncos. Menurut kalian masih worth it ga sih beli brand mahal cuma buat daily?`;
 
         visualText = `1. Foto perbandingan sebelum/sesudah atau foto produk dengan latar polos minimalis. 2. Foto unboxing kemasan toko.`;
+        aiPrompt = `Aesthetic flatlay smartphone photo of ${name} placed neatly on a minimalist warm wood desk beside a coffee cup, soft window sunlight, natural shadow, Pinterest cozy aesthetic, authentic social media photo`;
 
         replyText = `Buat yang penasaran sama nama tokonya, cek langsung di sini yaa (lagi promo + ${voucher}):
 👉 ${url}`;
@@ -497,6 +612,7 @@ Ini 3 alasan kenapa ${name} ini layak masuk keranjang:
 Definisi nemu hidden gem lokal di Shopee 🛍️✨`;
 
         visualText = `1. Foto grid 2-3 varian warna produk yang paling estetik. 2. Screenshot rating/review puas dari pembeli.`;
+        aiPrompt = `Close-up high-angle aesthetic smartphone photo of stylish minimalist ${name} resting on a warm natural wood bench in a cozy cafe, showing texture and stitching details, natural indoor window light, Pinterest lifestyle mood, realistic amateur photography`;
 
         replyText = `Link produk dan katalog lengkapnya bisa langsung cek di sini yaa (jangan lupa klaim ${voucher}):
 👉 ${url}`;
@@ -510,6 +626,7 @@ Awalnya skeptis karena harganya murah bgt dibanding barang sejenis di mall. Tapi
 Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seberapa sering barangnya beneran kepake sehari-hari tanpa bikin nyesel.`;
 
         visualText = `1. Foto produk 'in action' dalam situasi sehari-hari (di kantor, kampus, atau kamar). 2. Foto detail ketahanan barang.`;
+        aiPrompt = `Authentic candid mobile phone photo of ${name} being used in a daily casual lifestyle scene, realistic natural room lighting, high detail, not an advertisement, cozy aesthetic`;
 
         replyText = `Biar ga ribet nyari nama tokonya, ini link official produknya yaa (ada ${voucher}):
 👉 ${url}`;
@@ -523,12 +640,14 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
         category: category,
         url: url,
         commission: data.commission || "Komisi Toko / XTRA",
+        priceTag: priceTag || "Under 150rb 🔥 Penyelamat Dompet",
         status: "Siap Tayang",
         angleIdea: angleIdea,
         mainPost: mainText,
         visualText: visualText,
+        aiPrompt: aiPrompt,
         replyPost: replyText,
-        fullFormatted: `${mainText}\n\n[SARAN VISUAL]\n${visualText}\n\n[BALASAN PERTAMA]\n${replyText}`
+        fullFormatted: `${mainText}\n\n[SARAN VISUAL]\n${visualText}\n\n[PROMPT GAMBAR AI]\n${aiPrompt}\n\n[BALASAN PERTAMA]\n${replyText}`
       };
     }
 
@@ -539,12 +658,18 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
     const inputCategory = document.getElementById("inputCategory");
     const inputCommission = document.getElementById("inputCommission");
     const inputVoucher = document.getElementById("inputVoucher");
+    const inputPriceTag = document.getElementById("inputPriceTag");
     const mainPostEl = document.getElementById("mainPostContent");
-    const visualTextEl = document.getElementById("visualText");
     const replyPostEl = document.getElementById("replyPostContent");
+    const aiPromptTextEl = document.getElementById("aiPromptText");
     const sheetRowPreviewEl = document.getElementById("sheetRowPreview");
     const btnTestAffLink = document.getElementById("btnTestAffLink");
     const historyList = document.getElementById("historyList");
+    const canvasBadgeInput = document.getElementById("canvasBadgeInput");
+
+    // Canvas elements
+    const canvas = document.getElementById("posterCanvas");
+    const ctx = canvas.getContext("2d");
 
     // --- TOAST FUNCTION ---
     function showToast(message, icon = "✅") {
@@ -563,20 +688,107 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
       }, 2500);
     }
 
+    // --- CANVAS POSTER RENDERING ---
+    function drawPoster(img) {
+      const w = canvas.width;
+      const h = canvas.height;
+
+      // Draw background
+      ctx.fillStyle = "#11141a";
+      ctx.fillRect(0, 0, w, h);
+
+      // Draw Image with cover fit
+      if (img && img.complete && img.naturalWidth > 0) {
+        const iw = img.naturalWidth;
+        const ih = img.naturalHeight;
+        const scale = Math.max(w / iw, h / ih);
+        const nw = iw * scale;
+        const nh = ih * scale;
+        const ox = (w - nw) / 2;
+        const oy = (h - nh) / 2;
+        ctx.drawImage(img, ox, oy, nw, nh);
+      } else {
+        ctx.fillStyle = "#1f2937";
+        ctx.fillRect(0, 0, w, h);
+      }
+
+      // Draw aesthetic dark gradient overlay at top and bottom
+      const topGrad = ctx.createLinearGradient(0, 0, 0, 100);
+      topGrad.addColorStop(0, "rgba(0, 0, 0, 0.7)");
+      topGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
+      ctx.fillStyle = topGrad;
+      ctx.fillRect(0, 0, w, 100);
+
+      const btmGrad = ctx.createLinearGradient(0, h - 140, 0, h);
+      btmGrad.addColorStop(0, "rgba(0, 0, 0, 0)");
+      btmGrad.addColorStop(1, "rgba(0, 0, 0, 0.85)");
+      ctx.fillStyle = btmGrad;
+      ctx.fillRect(0, h - 140, w, 140);
+
+      // Draw Username Tag Top-Left
+      ctx.fillStyle = "rgba(0,0,0,0.65)";
+      ctx.roundRect ? ctx.roundRect(16, 16, 150, 32, 16) : ctx.rect(16, 16, 150, 32);
+      ctx.fill();
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 13px -apple-system, sans-serif";
+      ctx.fillText("🧵 @ahmediks", 30, 37);
+
+      // Draw Badge Text Pill Bottom
+      const badgeText = canvasBadgeInput.value.trim() || "Under 150rb 🔥";
+      ctx.font = "bold 15px -apple-system, sans-serif";
+      const textMetrics = ctx.measureText(badgeText);
+      const pillWidth = Math.min(w - 40, textMetrics.width + 36);
+      const pillHeight = 42;
+      const pillX = 20;
+      const pillY = h - 60;
+
+      // Badge shadow
+      ctx.shadowColor = "rgba(0, 0, 0, 0.4)";
+      ctx.shadowBlur = 10;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 4;
+
+      // Badge background pill
+      ctx.fillStyle = badgeBgColor;
+      if (ctx.roundRect) {
+        ctx.beginPath();
+        ctx.roundRect(pillX, pillY, pillWidth, pillHeight, 21);
+        ctx.fill();
+      } else {
+        ctx.fillRect(pillX, pillY, pillWidth, pillHeight);
+      }
+
+      // Reset shadow
+      ctx.shadowColor = "transparent";
+
+      // Badge text
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 15px -apple-system, sans-serif";
+      ctx.fillText(badgeText, pillX + 18, pillY + 26);
+    }
+
+    // Set initial canvas image
+    activeCanvasImage.crossOrigin = "anonymous";
+    activeCanvasImage.src = "assets/sneakers_pov.jpg";
+    activeCanvasImage.onload = () => drawPoster(activeCanvasImage);
+
     // --- RENDER DRAFT TO UI ---
     function renderDraft(draft) {
       currentDraft = draft;
       mainPostEl.textContent = draft.mainPost;
-      visualTextEl.textContent = draft.visualText;
       replyPostEl.textContent = draft.replyPost;
+      aiPromptTextEl.textContent = draft.aiPrompt;
       btnTestAffLink.href = draft.url;
+      canvasBadgeInput.value = draft.priceTag;
 
       // Format row for Google Sheets (Tab-separated)
-      // Columns: Tanggal | Nama Toko / Produk | Kategori | Link Affiliate | Perkiraan Komisi | Status Konten | Ide Sudut Promosi | Draf Naskah Threads
       const singleLineCopy = draft.fullFormatted.replace(/\r?\n/g, " ");
       const rowString = `${draft.date}\t${draft.name}\t${draft.category}\t${draft.url}\t${draft.commission}\t${draft.status}\t${draft.angleIdea}\t${singleLineCopy}`;
       sheetRowPreviewEl.textContent = `${draft.date} | ${draft.name} | ${draft.category} | ${draft.url} | ${draft.commission} | ${draft.status}`;
       sheetRowPreviewEl.dataset.fullRow = rowString;
+
+      // Redraw canvas with new badge text
+      drawPoster(activeCanvasImage);
     }
 
     // --- CLIPBOARD ACTIONS ---
@@ -591,6 +803,13 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
       if (!currentDraft) return;
       navigator.clipboard.writeText(currentDraft.replyPost).then(() => {
         showToast("Balasan Pertama disalin! Siap tempel di kolom komentar.");
+      });
+    });
+
+    document.getElementById("btnCopyAiPrompt").addEventListener("click", () => {
+      if (!currentDraft) return;
+      navigator.clipboard.writeText(currentDraft.aiPrompt).then(() => {
+        showToast("Prompt Gambar AI disalin! Tempel di ChatGPT / Midjourney / Canva.");
       });
     });
 
@@ -609,6 +828,51 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
       });
     });
 
+    // --- CANVAS FILE UPLOAD & CONTROLS ---
+    document.getElementById("canvasFileInput").addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const userImg = new Image();
+        userImg.src = event.target.result;
+        userImg.onload = () => {
+          activeCanvasImage = userImg;
+          drawPoster(activeCanvasImage);
+          showToast("Foto produk Anda berhasil dimuat ke Canvas!");
+        };
+      };
+      reader.readAsDataURL(file);
+    });
+
+    document.getElementById("btnUseSampleImage").addEventListener("click", () => {
+      activeCanvasImage.src = "assets/sneakers_pov.jpg";
+      activeCanvasImage.onload = () => {
+        drawPoster(activeCanvasImage);
+        showToast("Foto contoh dimuat ulang.");
+      };
+    });
+
+    canvasBadgeInput.addEventListener("input", () => {
+      drawPoster(activeCanvasImage);
+    });
+
+    document.querySelectorAll(".btn-theme-badge").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        badgeBgColor = e.target.dataset.color;
+        drawPoster(activeCanvasImage);
+      });
+    });
+
+    document.getElementById("btnDownloadPoster").addEventListener("click", () => {
+      const dataUrl = canvas.toDataURL("image/jpeg", 0.92);
+      const a = document.createElement("a");
+      a.href = dataUrl;
+      a.download = `threads_poster_${Date.now()}.jpg`;
+      a.click();
+      showToast("Poster Threads berhasil diunduh!", "⬇️");
+    });
+
     // --- FORM SUBMISSION ---
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -620,12 +884,13 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
         category: inputCategory.value,
         commission: inputCommission.value.trim(),
         voucher: inputVoucher.value.trim(),
+        priceTag: inputPriceTag.value.trim(),
         formula: selectedFormula
       };
 
       const draft = generateCopy(data);
       renderDraft(draft);
-      showToast("Naskah Threads berhasil digenerate!");
+      showToast("Naskah & Visual Threads berhasil digenerate!");
     });
 
     // --- QUICK SAMPLE BUTTON ---
@@ -635,6 +900,7 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
       inputCategory.value = defaultData.category;
       inputCommission.value = defaultData.commission;
       inputVoucher.value = defaultData.voucher;
+      inputPriceTag.value = defaultData.priceTag;
       document.querySelector(`input[name="formula"][value="${defaultData.formula}"]`).checked = true;
 
       const draft = generateCopy(defaultData);
@@ -647,6 +913,7 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
       form.reset();
       inputCommission.value = "Komisi Toko / XTRA";
       inputVoucher.value = "Voucher Diskon Toko s.d 50rb + Gratis Ongkir XTRA";
+      inputPriceTag.value = "Under 150rb 🔥 Penyelamat Dompet";
       showToast("Formulir direset.", "🔄");
     });
 
@@ -662,7 +929,6 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
 
     function saveToHistory(draft) {
       let history = getStoredHistory();
-      // Remove existing if matching URL
       history = history.filter(item => item.url !== draft.url);
       history.unshift(draft);
       if (history.length > 15) history.pop();
@@ -703,7 +969,6 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
         historyList.appendChild(card);
       });
 
-      // Bind events
       document.querySelectorAll(".btn-load-history").forEach(btn => {
         btn.addEventListener("click", (e) => {
           const idx = e.target.dataset.index;
@@ -713,6 +978,7 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
             inputName.value = selected.name;
             inputCategory.value = selected.category;
             inputCommission.value = selected.commission || "Komisi Toko / XTRA";
+            inputPriceTag.value = selected.priceTag || "Under 150rb 🔥";
             renderDraft(selected);
             showToast(`Draft "${selected.name}" dimuat!`);
           }
@@ -748,7 +1014,6 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
     // --- CLOCK & TIMING INDICATOR ---
     function updateClock() {
       const now = new Date();
-      // Format to WIB (UTC+7)
       const options = { timeZone: "Asia/Jakarta", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false };
       const timeStr = now.toLocaleTimeString("id-ID", options);
       const clockEl = document.getElementById("liveClock");
@@ -781,7 +1046,6 @@ Kadang emang bener, kepuasan belanja itu bukan seberapa mahal harganya, tapi seb
       const initialDraft = generateCopy(defaultData);
       renderDraft(initialDraft);
       
-      // Pre-seed history if empty
       if (getStoredHistory().length === 0) {
         saveToHistory(initialDraft);
       } else {
